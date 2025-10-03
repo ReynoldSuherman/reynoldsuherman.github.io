@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <title>Macro Recorder Documentation - Reeinold's Portfolio</title>
+</head>
+<body>
+    <div id="Header">
+        <p id="Reeinold">Reeinold's Portfolio</p>
+        <p id="Description"><b>Macro Recorder Documentation</b></p>
+    </div>
+    <hr class="tick">
+    <nav>
+        <a href="index.html">Main</a>
+        <a href="About.html">About</a>
+        <a href="Portofolio.html">Portfolio</a>
+        <a href="https://github.com/Reeinold?tab=activity_feed" target="_blank">GitHub</a>
+    </nav>
+
+    <!-- Navigation Buttons -->
+    <div class="doc-navigation">
+        <button onclick="window.location.href='Portofolio.html'" class="nav-button portfolio-btn">
+            ← Back to Portfolio
+        </button>
+        <button onclick="window.open('https://github.com/Reeinold', '_blank')" class="nav-button repo-btn">
+            View Repository →
+        </button>
+    </div>
+
+    <div class="documentation-content">
+        <div class="doc-section">
+            <h1>Software: Macro Recorder Documentation</h1>
+
+            <div class="icon-section">
+                <img src="./Footage/icon1.png" alt="icon" class="doc-icon">
+                <h5>foto icon untuk software macro Recorder</h5>
+            </div>
+
+            <div class="intro-section">
+                <p><b>selamat datang di Dokumentasi tentang Pengembangan software pertama aku yaitu macro Recorder</b></p>
+                <p>kalian langung berpikir mengapa aku membuat software macro recoder? padahal di luar sana terdapat software macro yang sudah jadi dan siap pakai. memang siap pakai dan praktis karena pada dasarnya macro recoder dibuat dengan tujuan user merekam pergerakan mouse atau keyboard lalu ketika sudah selesai program tersebut akan menjalakan langkah/pergerakan dari mouse ataupun input keyboard sesuai dengan pergerakan user. macro recoder sendiri bisa di atur untuk apakah hanya dijalakan sekali,dijalakan sesuai perulangan yang sudah di setel atau selamanya sampai user menekan tombol stop atau perintah key yang sudah di set</p>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Existing Macro Recorders</h2>
+
+            <div class="comparison-section">
+                <div class="software-item">
+                    <h3>Jitbit Macro Recorder</h3>
+                    <img src="./Footage/image.png" alt="jitbit macro" class="software-image">
+                    <p>pada umumnya kita selalu menggunakan macro recoder dari jitbit karena sudah familiar dan pastinya pertama kali kita mau download atau cari di google pasti ada yang link macro recoder website software dengan nama pembuat yaitu:jitbit.</p>
+                </div>
+
+                <div class="software-item">
+                    <h3>Wootomation</h3>
+                    <img src="./Footage/wooting.png" alt="wootomation" class="software-image">
+                    <h6>berikut tampilkan website untuk software wootomation</h6>
+                    <p>wootomation memang pada dasarnya sama seperti macro recoder pada umumnya yang membedakan hanyalah bahwa software ini bersifat open source dan bukan sebuah bloatware "kutipan dari website aslinya"</p>
+                </div>
+            </div>
+
+            <div class="feature-highlight">
+                <p>tapi dari semua macro recoder yang sudah aku sebutkan ada satu fitur yang belum ada di macro recoder, yaitu <b><u>fitur yang dimana macro recoder dieksekusi di program yang sudah di pilih/di target.</u></b></p>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>fitur target dalam macro recoder</h2>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h3>The Problem</h3>
+                    <p><u>mengapa fitur ini belum ada/tidak ada sama sekali di macro recoder?</u> jawabannya cukup mudah karena macro pada dasarnya akan jalan tidak peduli di program mana atau lagi bukan program apapun <b>dia akan mengikuti langkah,pergerakan dari mouse/input dari keyboard tanpa melihat dia di program apa dan dimana dia sekarang!</b></p>
+                    <p>memang ini tidak ada masalahnya untuk orang pada umumnya karena tugas macro recoder memang seperti itu mudah dan ikuti saja maupun aku ganti ke program yang lain dia akan tetap jalan sesuai dengan instruksi yang di berikan.</p>
+                    <p>tapi untuk saya sendiri,saya mulai melihat ini adalah sebuah masalah,<b>mengapa ini menjadi sebuah masalah?</b></p>
+                    <h4>mudah, <u>karena ini menggangu dan membuat saya tidak bisa meng Alt+Tab untuk pindah keprogram lain sehingga membuat efisiensi menjadi menurun</u></h4>
+                </div>
+
+                <div class="solution">
+                    <h3>The Solution</h3>
+                    <p>aku bisa saja menghentikan macro itu tapi tujuan macro recoder khususnya pada saat bermain game adalah: <u>untuk bisa melakukan grinding tanpa harus standby selama 24 jam dan bisa afk tanpa harus terkena penalti atau membuat progress grinding di game menjadi menurun!</u></p>
+                    <p>dari situ lah terpikirlah untuk membuat sebuah project software untuk pertama kalinya yaitu macro recoder ciptaan aku sendiri</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Macro Recorder buatan Reynold</h2>
+
+            <div class="development-section">
+                <p>untuk pembuatan software ini dikarenakan dimakan waktu yang lama serta pastinya dikarenakan aku yang masih mahasiswa dengan keahlian yang sekarang pastinya akan memerluhkan waktu yang lama dikarenakan debug dan syntax coding yang pertama kali aku pakai, aku menggunakan python dengan bantuan JSON dalam background serta bantuan AI untuk bisa mempercepat debuging dan pencarian masalah serta demi meningkatkan efisiensi</p>
+
+                <div class="interface-showcase">
+                    <img src="./Footage/image1.png" alt="interface" class="interface-image">
+                    <div class="interface-description">
+                        <p><b>ini adalah tampilan dari Macro recoder ciptaan aku sendiri</b>,macro recoder ini di ciptakan untuk bisa mengeksekusi instruksi macro yang sudah di rekam ke dalam program yang ditargetkan untuk bisa meningkatkan efisiensi dan tanpa harus khawatir jika macro akan tetap berjalan walaupun sudah pindah program.</p>
+                        <p>untuk tampilan bisa dibilang simple dan sederhana dan ui yang diberikan terasa simple dan minimalis,ini bisa dibilang prototype karena masih ada beberapa kesalahan dalam eksekusi tapi secara sederhananya bisa berjalan namun masih ada bug yang membuat macro menjadi error</p>
+                    </div>
+                </div>
+
+                <div class="feature-section">
+                    <h3>Key Features</h3>
+                    <p>dalam macro recoder ini ada terdapat fitur disable key,mengapa aku membuat fitur disable key? bisa dibilang pada saat dijalakan macro kadang kita suka menekan tombol di keyboard seperti enter win dan lain-lain itu membuat program yang sedang berjalan terhenti karena adanya seperti contoh tombol enter untuk chat dan membuat yang harus nya melalukan grinding malah mengetik chat yang aneh dam spam tentunya ini akan menggangu macro oleh karena itu aku ciptakan fitur ini untuk bisa <u>menimalisir terjadinya human error</u> karena biasanya kita kadang suka <b>tidak sengaja menekan</b> key seperti enter sebelum tidur dikarenakan capek atau lelah.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h3>Technical Implementation</h3>
+
+            <div class="code-showcase">
+                <img src="./Footage/image2.png" alt="coding" class="code-image">
+                <div class="code-description">
+                    <p>berikut ini adalah tampilan source code untuk program macro recoder ini,bisa dibilang sekali lagi karena masih dalam prototype aku coba buat dengan bantuan AI untuk mencari kesalahan dan debug serta keterbatasan aku dalam pembuatan software untuk pertama kali bahasa yang aku gunakan yaitu python karena sintak yang mudah dan sederhana tanpa harus membuat parameter yang terlalu merepotkan serta python adalah salah satu bahasa pemograman yang populer dikalangan pemula karena <u>riendly dan mudah dipahami sintaksnya.</u></p>
+                    <p>untuk foto icon yang kalian lihat di atas <b>apakah itu icon asli untuk macro recoder?</b> kalau aku boleh jujur tidak! itu aku pakai sebagai sementara saja itu hanya dari screenshoot lama yang kebetulan lucu jadi aku pakai buat icon macro recoder hehe 🤣 </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h3>file direktori untuk macro recoder</h3>
+
+            <div class="directory-showcase">
+                <img src="./Footage/iamge3.png" alt="direktori" class="directory-image">
+                <div class="directory-description">
+                    <p>kalian pasti bertanya mengapa ada json di folder proto? karena untuk background aku menggunakan JSON dan setting untuk bisa mengubah configurasi dalam macro recoder bisa dibilang agar ada tema yang menarik aku menambahkan tema retro tapi jika tema retro tidak ditemukan apakah langsung berhenti? <b>tidak!</b></p>
+                    <p>program akan tetap berjalan namun untuk UI akan menggunakan setting defaultnya yaitu tema Hitam!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>akhir kata</h2>
+            <div class="conclusion">
+                <p>bisa dibilang ini pertama kali aku bikin software dan saya sangat terbantu dikarenakan Adanya AI dan saya bisa menemukan titik salahnya dimana,memang ini masih ada kesalahan dan bug tapi suatu saat nanti macro ini akan bisa menolong banyak orang yang mungkin memiliki masalah yang sama seperti aku</p>
+                <p>sekian dari saya terima kasih</p>
+                <div class="repository-link">
+                    <a href="https://github.com/Reeinold" target="_blank" class="repo-link-button">
+                        🔗 View Repository on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "tracks": [
+    {
+      "title": "Blue Archive Theme 242",
+      "artist": "Blue Archive",
+      "src": "music/Blue Archive _ Theme 242 [10 Minutes Loop] [U8PWvarbgok].mp3"
+    },
+    {
+      "title": "Blue Archive OST 135",
+      "artist": "Blue Archive",
+      "src": "music/blue archive ost 135.mp3"
+    },
+    {
+      "title": "Chatter Between Roots",
+      "artist": "genshin",
+      "src": "music/Chatter Between Roots.mp3"
+    },
+    {
+      "title": "Flows of Jade-Like Water",
+      "artist": "genshin",
+      "src": "music/Flows of Jade-Like Water.mp3"
+    },
+    {
+      "title": "Nightcore Gwai san neung",
+      "artist": "Nightcore",
+      "src": "music/Nightcore Gwai san neung.mp3"
+    },
+    {
+      "title": "Tsukihime Main Theme",
+      "artist": "Tsukihime",
+      "src": "music/Tsukihime main theme.mp3"
+    },
+    {
+      "title": "Guiding Ahead Lobby Theme",
+      "artist": "Arknights",
+      "src": "music/アークナイツ BGM - Guiding Ahead Lobby Theme  Arknights明日方舟 吾导先路 OST.mp3"
+    },
+    {
+      "title": "Invitation to Wine Lobby Theme",
+      "artist": "Arknights",
+      "src": "music/アークナイツ BGM - Invitation to Wine Lobby Theme  Arknights明日方舟 将进酒 OST.mp3"
+    },
+    {
+      "title": "安里屋ユンタ (沖ツラバージョン) M26",
+      "artist": "hmm.....",
+      "src": "music/安里屋ユンタ (沖ツラバージョン) M26.mp3"
+    },
+    {
+      "title": "Frost Pillar - Another Side -",
+      "artist": "nikke",
+      "src": "music/Frost Pillar - Another Side -.mp3"
+    },
+    {
+      "title": "Frost Pillar (Scenario Version)",
+      "artist": "nikke",
+      "src": "music/Frost Pillar (Scenario Version).mp3"
+    },
+    {
+      "title": "Frost Pillar",
+      "artist": "nikke",
+      "src": "music/Frost Pillar.mp3"
+    },
+    {
+      "title": "Sān-Z Studio Theme Zenless Zone Zero 1.3",
+      "artist": "Zenless Zone Zero",
+      "src": "music/Sān-Z Studio Theme  Zenless Zone Zero 1.3.mp3"
+    },
+    {
+      "title": "Zenless Zone Zero Lumina Square Night OST",
+      "artist": "Zenless Zone Zero",
+      "src": "music/Zenless Zone Zero Lumina Square Night OST  ZZZ.mp3"
+    }
+  ]
+}

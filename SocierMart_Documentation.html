@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <title>SocierMart Documentation - Framework Layer Architecture</title>
+</head>
+<body>
+    <div id="Header">
+        <p id="Reeinold">SocierMart</p>
+        <p id="Description"><b>Framework Layer Architecture Documentation</b></p>
+    </div>
+    <hr class="tick">
+    <nav>
+        <a href="index.html">Main</a>
+        <a href="About.html">About</a>
+        <a href="Portofolio.html">Portfolio</a>
+        <a href="https://github.com/Reeinold?tab=activity_feed" target="_blank">GitHub</a>
+    </nav>
+
+    <!-- Navigation Buttons -->
+    <div class="doc-navigation">
+        <button onclick="window.location.href='Portofolio.html'" class="nav-button portfolio-btn">
+            ← Back to Portfolio
+        </button>
+        <button onclick="window.open('https://github.com/Reeinold', '_blank')" class="nav-button repo-btn">
+            View Repository →
+        </button>
+    </div>
+
+    <div class="documentation-content">
+        <div class="doc-section">
+            <h1>SocierMart - Inventory & Shopping Cart System</h1>
+
+
+            <div class="intro-section">
+                <p><b>Selamat datang di Dokumentasi Framework Layer Architecture untuk SocierMart</b></p>
+                <p>SocierMart adalah aplikasi console berbasis Java yang dirancang untuk mengelola stok barang dan transaksi pembelian secara interaktif. Sistem ini dikembangkan sebagai solusi untuk permasalahan manajemen inventori dan transaksi sederhana pada toko atau e-commerce skala kecil-menengah. Aplikasi ini menerapkan arsitektur berlapis dengan berbagai design pattern untuk mencapai kode yang lebih modular, mudah dipelihara, dan scalable.</p>
+            </div>
+
+            <div class="feature-highlight">
+                <p><strong>Fitur Utama:</strong> Manajemen katalog produk, keranjang belanja interaktif, sistem pembayaran, validasi stok real-time, dan arsitektur yang mendukung ekstensi fitur di masa depan.</p>
+            </div>
+        </div>
+
+
+        <div class="doc-section">
+            <h2>Design Patterns Implementation</h2>
+
+            <div class="comparison-section">
+                <div class="software-item">
+                    <h3>Facade Pattern</h3>
+                    <img src="./Footage/facade.png" alt="Facade Pattern" class="software-image">
+                    <p>Facade Pattern digunakan untuk menyederhanakan interaksi antara UI (Main.java) dengan subsistem yang kompleks. Dengan satu interface utama (ShoppingFacade), seluruh operasi bisnis dapat dipanggil dari satu titik.</p>
+                </div>
+
+                <div class="software-item">
+                    <h3>Singleton Pattern</h3>
+                    <img src="./Footage/singleton.png" alt="Singleton Pattern" class="software-image">
+                    <p>Singleton Pattern memastikan hanya ada satu instance dari keranjang belanja (ShoppingCart) selama satu sesi aplikasi, menjamin konsistensi data.</p>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <div class="software-item">
+                    <h3>Strategy Pattern</h3>
+                    <img src="./Footage/strategy.png" alt="Strategy Pattern" class="software-image">
+                    <p>Strategy Pattern digunakan untuk memungkinkan sistem memilih strategi perhitungan harga atau diskon yang berbeda-beda secara dinamis.</p>
+                </div>
+
+                <div class="software-item">
+                    <h3>Command Pattern</h3>
+                    <img src="./Footage/command.png" alt="Command Pattern" class="software-image">
+                    <p>Command Pattern mengenkapsulasi aksi seperti tambah/hapus barang sebagai objek perintah yang dapat dieksekusi, dibatalkan, atau diulang.</p>
+                </div>
+            </div>
+
+            <div class="feature-highlight">
+                <p>State Pattern mengelola status dari keranjang belanja, misal status "kosong", "diisi", atau "checkout", memisahkan logika perubahan status dan transisi.</p>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Application Workflow</h2>
+
+            <div class="interface-showcase">
+                <img src="./Footage/java uml.png" alt="Application Workflow" class="interface-image">
+                <div class="interface-description">
+                    <p><b>Alur Kerja Aplikasi SocierMart</b>. Aplikasi ini menyediakan menu interaktif dengan 9 opsi utama: menambah/hapus barang dari keranjang, mengelola stok produk, melihat katalog, membuat pesanan, memilih metode pembayaran, dan melakukan pembayaran. Setiap operasi di-handle melalui ShoppingFacade yang mengkoordinasikan berbagai service.</p>
+                    <p>Interface console yang user-friendly memungkinkan pengguna untuk berinteraksi dengan sistem inventory dan shopping cart secara efisien.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Why Design Patterns Matter</h2>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h3>The Problem</h3>
+                    <p><u>Mengapa aplikasi e-commerce membutuhkan design patterns?</u> Dalam pengembangan aplikasi skala besar, sering kali kita menghadapi kompleksitas yang tinggi. Tanpa pola desain yang tepat, kode menjadi sulit dipelihara, sulit dikembangkan, dan rentan terhadap bug. Coupling yang tinggi antara komponen membuat perubahan kecil dapat memengaruhi seluruh sistem.</p>
+                    <p>Pada aplikasi seperti SocierMart, kita perlu menangani berbagai aspek: manajemen inventori, keranjang belanja, proses pembayaran, dan validasi stok. Tanpa arsitektur yang baik, aplikasi akan menjadi monolithic dan sulit untuk di-scale atau di-modifikasi.</p>
+                </div>
+
+                <div class="solution">
+                    <h3>The Solution</h3>
+                    <p>Design patterns memberikan solusi terbukti untuk masalah umum dalam pengembangan software. Dengan menerapkan Facade, Singleton, Strategy, Command, dan State patterns, SocierMart menjadi lebih modular, maintainable, dan extensible. Setiap pattern memecahkan masalah spesifik sambil menjaga konsistensi arsitektur keseluruhan.</p>
+                    <p>Hasilnya adalah aplikasi yang mudah dikembangkan, diuji, dan dipelihara, dengan kode yang bersih dan terstruktur.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Facade Pattern Implementation</h2>
+
+            <div class="interface-showcase">
+                <img src="./Footage/facade_implement.png" alt="Facade Pattern Implementation" class="interface-image">
+                <div class="interface-description">
+                    <p><b>Facade Pattern sebagai jembatan antara UI dan subsistem</b>. ShoppingFacade bertindak sebagai interface tunggal yang menyederhanakan interaksi kompleks antara Main.java dengan berbagai service (Service, ServicePesan, ServicePembayaran). Dengan facade ini, kode di layer presentasi menjadi lebih bersih dan mudah dipahami.</p>
+                    <p>Facade mengurangi tight coupling dan memudahkan pengembangan fitur baru tanpa mengubah kode UI yang sudah ada.</p>
+                </div>
+            </div>
+
+            <div class="code-showcase">
+                <div class="code-description">
+                    <h4>Kode ShoppingFacade.java</h4>
+                    <pre><code class="language-java">public class ShoppingFacade {
+    private Service service;
+    private ServicePesan pesanan;
+    private ServicePembayaran bayar;
+    private Map<Integer, Product> productCatalog;
+    private Map<Integer, Product> cart;
+
+    public ShoppingFacade() {
+        productCatalog = new HashMap<>();
+        cart = new HashMap<>();
+        service = new Service(cart, productCatalog);
+        pesanan = new ServicePesan(cart);
+        bayar = new ServicePembayaran();
+    }
+
+    public void addProductToCatalogAndCart(Product product) {
+        try {
+            int idKey = Integer.parseInt(product.getId());
+            productCatalog.put(idKey, product);
+            addToCart(idKey);
+            System.out.println("Produk " + product.getName() + " berhasil ditambahkan ke katalog dan keranjang.");
+        } catch (NumberFormatException e) {
+            System.out.println("ID produk harus berupa angka.");
+        }
+    }
+
+    public Collection<Product> getCart() {
+        return service.getCart().values();
+    }
+
+    public void addToCart(int productId) {
+        service.addToCart(productId);
+    }
+
+    public void removeFromCart(int productId) {
+        service.removeFromCart(productId);
+    }
+
+    public void placeOrder() {
+        pesanan.placeOrder();
+    }
+
+    public void selectPaymentMethod(String method) {
+        bayar.selectPaymentMethod(method);
+    }
+
+    public void pay() {
+        double total = pesanan.getTotal();
+        if (total > 0) {
+            bayar.processPayment(total);
+        } else {
+            System.out.println("Tidak ada pembayaran karena keranjang kosong.");
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Singleton Pattern untuk ShoppingCart</h2>
+
+            <div class="feature-section">
+                <h3>Key Features</h3>
+                <p>Singleton Pattern memastikan hanya ada satu instance keranjang belanja selama aplikasi berjalan. Konstruktor private dan akses melalui getInstance() menjamin konsistensi data. Thread-safe implementation dengan double-checked locking mencegah race conditions.</p>
+                <p>Pattern ini menghindari duplikasi data keranjang yang bisa menyebabkan inkonsistensi transaksi, terutama dalam environment multi-threaded.</p>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h3>Technical Implementation</h3>
+
+            <div class="code-showcase">
+                <img src="./Footage/main.png" alt="Java Code" class="code-image">
+                <div class="code-description">
+                    <p>Berikut adalah implementasi lengkap dari berbagai design patterns dalam SocierMart. Kode ditulis dalam Java dengan struktur package yang terorganisir. Setiap pattern diimplementasikan dengan mengikuti best practices untuk memastikan maintainability dan extensibility.</p>
+                    <p>Source code tersedia di repository GitHub dengan dokumentasi lengkap untuk setiap kelas dan method.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h3>Project Structure</h3>
+
+            <div class="directory-showcase">
+                <img src="./Footage/struktur.png" alt="Project Structure" class="directory-image">
+                <div class="directory-description">
+                    <p>Struktur project SocierMart mengikuti arsitektur layered dengan pemisahan yang jelas antara presentation, business logic, dan data access layer. Package-package terorganisir berdasarkan fungsionalitas: Command untuk command pattern, Model untuk data entities, Singleton untuk shopping cart, State untuk state management, Strategy untuk discount strategies, dan facade untuk service layer.</p>
+                    <p>Arsitektur ini memudahkan development, testing, dan maintenance aplikasi.</p>
+                </div>
+            </div>
+        </div>
+        <div class="doc-section">
+            <h2>Technologies & Architecture Benefits</h2>
+
+            <div class="feature-section">
+                <h3>Technology Stack</h3>
+                <p><strong>Java SE 21:</strong> Bahasa pemrograman utama dengan fitur modern untuk development yang efisien.</p>
+                <p><strong>Object-Oriented Design:</strong> Paradigma OOP dengan encapsulation, inheritance, dan polymorphism.</p>
+                <p><strong>Design Patterns:</strong> Facade, Singleton, Strategy, Command, dan State patterns untuk arsitektur yang robust.</p>
+                <p><strong>Layered Architecture:</strong> Pemisahan yang jelas antara presentation, business logic, dan data access layer.</p>
+            </div>
+
+            <div class="feature-highlight">
+                <p><strong>Benefits:</strong> Modularitas tinggi, maintainability yang baik, scalability untuk pertumbuhan future, testability yang mudah, dan reusability komponen.</p>
+            </div>
+        </div>
+
+        <div class="doc-section">
+            <h2>Akhir Kata</h2>
+            <div class="conclusion">
+                <p>Bisa dibilang proyek SocierMart ini berhasil mengimplementasikan berbagai design patterns dalam Java dengan arsitektur yang terstruktur dan maintainable. Dengan menerapkan Facade, Singleton, Strategy, Command, dan State patterns, aplikasi menjadi lebih modular dan mudah dikembangkan. Setiap pattern memecahkan masalah spesifik dalam pengelolaan inventory dan shopping cart system.</p>
+                <p>Proyek ini menunjukkan bagaimana design patterns dapat meningkatkan kualitas kode dan memudahkan maintenance aplikasi skala enterprise. Source code lengkap tersedia untuk referensi dan pengembangan lebih lanjut.</p>
+                <div class="repository-link">
+                    <a href="https://github.com/Reeinold" target="_blank" class="repo-link-button">
+                        🔗 View Repository on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

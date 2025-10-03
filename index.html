@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <title>Reeinold's Portfolio</title>
+</head>
+<body>
+    <div id="Header">
+        <p id="Reeinold">Reeinold's Portfolio</p>
+        <p id="Description"><b>Welcome to Reeinold Personal Website and Portfolio</b></p>
+        <p id="Greetings"></p>
+    </div>
+    <hr class="tick">
+    <nav>
+        <a href="index.html">Main</a>
+        <a href="About.html">About</a>
+        <a href="Portofolio.html">Portfolio</a>
+        <a href="https://github.com/Reeinold?tab=activity_feed" target="_blank">GitHub</a>
+    </nav>
+    <div class="About">
+        <div id="rec">
+            <div class="about-content">
+                <img src="Profile1.jpg" alt="Reeinold's Photo" class="profile-photo">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p id="font1">Halo! Saya Reeinold, seorang pengembang yang bersemangat dalam menciptakan solusi web inovatif. Dengan keahlian dalam HTML, CSS, JavaScript, dan mengusai beberapa bahasa pemograman yang lain, saya senang mengubah ide menjadi aplikasi yang fungsional dan estetis.</p>
+                    <p id="font1"><b>Untuk mengenal aku lebih lanjut klik <U> "Learn More About me"</U></b></p>
+                </div>
+            </div>
+        </div>
+        <button onclick="window.location.href='About.html'">Learn More About Me</button>
+    </div>
+    <div class="Portfolio">
+        <h2>My Projects</h2>
+        <p>Here are some of the projects I've completed. Each one represents a step in my learning journey and showcases different skills and technologies.</p>
+
+        <!-- Project Images Gallery -->
+        <div class="project-gallery">
+            <div class="gallery-item">
+                <img src="Footage/Website1.png" alt="Project 1" class="project-image">
+                <div class="gallery-overlay">
+                    <h4>VSTravel</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="Footage/Websitee1.png" alt="Project 2" class="project-image">
+                <div class="gallery-overlay">
+                    <h4>InEdu</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="Footage/Websiteee1.png" alt="Project 3" class="project-image">
+                <div class="gallery-overlay">
+                    <h4>website BSLC</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="Footage/websiteeee1.png" alt="Project 4" class="project-image">
+                <div class="gallery-overlay">
+                    <h4>Portfolio Showcase</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="Footage/main.png" alt="Project 4" class="project-image">
+                <div class="gallery-overlay">
+                    <h4>sociermart</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="Footage/image1.png" alt="Project 4" class="project-image">
+                <div class="gallery-overlay">
+                    <h4>Software macro recoder</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-grid">
+           <div class="project-grid">
+            <div class="project">
+                <h3>Website InEdu</h3>
+                <p>Website edukasi yang support untuk para disabilitas</p>
+                <a href="reeinold.github.io" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Website Bslc</h3>
+                <p>Website pertama kali saya buat untuk seleksi masuk BSLC (binus student learning center)</p>
+                <a href="reeiiynold.github.io" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Website VSTravel</h3>
+                <p>Project website untuk Lab Human Computer Interaction HCI tentang Website Travel</p>
+                <a href="reeiynold.github.io" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Software Macro Recorder</h3>
+                <p>ini adalah project sendiri membuat Software Macro Recorder</p>
+                <a href="https://github.com/Reeinold/Macro-Recorder_Reynold" target="_blank">View repository</a>
+                <a href="Macro_Documentation.html"><b>Documentation</b></a>
+            </div>
+            <div class="project">
+                <h3>Project Java FLA SocierMart</h3>
+                <p>ini adalah project FLA dengan menggunakan Java yaitu SocierMart</p>
+                <a href="https://github.com/Reeinold/FLA_SocierMart" target="_blank">View repository</a>
+                <a href="SocierMart_Documentation.html"><b>Documentation</b></a>
+            </div>
+            <div class="project">
+                <h3>Portfolio Website</h3>
+                <p>This responsive portfolio website you're viewing right now!</p>
+                <a href="#Header">Scroll to Top</a>
+            </div>
+        </div>
+        <button onclick="window.location.href='Portofolio.html'">View All Projects</button>
+    </div>
+    <div class="github">
+        <h2>GitHub</h2>
+        <div class="github-integrated">
+            <div class="github-text-stats">
+                <h3>Profile Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Username:</span>
+                        <span id="github-name" class="stat-value"></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Public Repos:</span>
+                        <span id="github-repos" class="stat-value"></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Followers:</span>
+                        <span id="github-followers" class="stat-value"></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Following:</span>
+                        <span id="github-following" class="stat-value"></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Public Gists:</span>
+                        <span id="github-gists" class="stat-value"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="github-visual-stats">
+                <div class="github-stat-card">
+                    <img id="github-card-image" src="" alt="GitHub Stats" />
+                </div>
+            </div>
+        </div>
+        <div class="github-stats-container">
+            <div class="github-stat-card">
+                <img src="https://github-readme-stats.vercel.app/api?username=Reeinold&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true" alt="GitHub Stats" />
+            </div>
+            <div class="github-stat-card">
+                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Reeinold&layout=compact&theme=github_dark" alt="Top Languages" />
+            </div>
+        </div>
+        <div class="github-link">
+            <a href="https://github.com/Reeinold" target="_blank" class="github-button">View Full Profile on GitHub</a>
+        </div>
+    </div>
+
+
+    <script src="Script.js"></script>
+    <script src="music-player.js"></script>
+</body>
+</html>
