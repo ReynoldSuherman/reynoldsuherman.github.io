@@ -131,8 +131,8 @@
     private Service service;
     private ServicePesan pesanan;
     private ServicePembayaran bayar;
-    private Map<Integer, Product> productCatalog;
-    private Map<Integer, Product> cart;
+    private Map&lt;Integer, Product&gt; productCatalog;
+    private Map&lt;Integer, Product&gt; cart;
 
     public ShoppingFacade() {
         productCatalog = new HashMap<>();
@@ -153,7 +153,7 @@
         }
     }
 
-    public Collection<Product> getCart() {
+    public Collection&lt;Product&gt; getCart() {
         return service.getCart().values();
     }
 

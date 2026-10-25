@@ -169,13 +169,14 @@ class FloatingMusicPlayer {
     }
 
     createPlayer() {
+        const activeTrack = this.tracks[this.currentTrack] || this.tracks[0] || { title: 'No track', artist: '-' };
         const playerHTML = `
             <div id="floating-music-player" class="music-player">
                 <div class="player-header">
                     <div class="now-playing">
                         <div class="track-info">
-                            <div class="track-title">${this.tracks[this.currentTrack].title}</div>
-                            <div class="track-artist">${this.tracks[this.currentTrack].artist}</div>
+                            <div class="track-title">${activeTrack.title}</div>
+                            <div class="track-artist">${activeTrack.artist}</div>
                         </div>
                         <div class="player-controls">
                             <button class="control-btn" id="prev-btn">⏮</button>
@@ -1098,7 +1099,11 @@ class FloatingMusicPlayer {
             isMinimized: this.isMinimized,
             playlistVisible: this.playlistVisible
         };
-        localStorage.setItem('musicPlayerState', JSON.stringify(state));
+        try {
+            localStorage.setItem('musicPlayerState', JSON.stringify(state));
+        } catch (error) {
+            console.log('Unable to save music player state:', error);
+        }
     }
 
     restoreState() {
@@ -1106,8 +1111,10 @@ class FloatingMusicPlayer {
         if (savedState) {
             try {
                 const state = JSON.parse(savedState);
-                this.currentTrack = state.currentTrack || 0;
-                this.volume = state.volume || 0.7;
+                const lastIndex = Math.max(this.tracks.length - 1, 0);
+                const savedTrack = parseInt(state.currentTrack, 10);
+                this.currentTrack = Number.isNaN(savedTrack) ? 0 : Math.min(Math.max(savedTrack, 0), lastIndex);
+                this.volume = typeof state.volume === 'number' ? Math.min(Math.max(state.volume, 0), 1) : 0.7;
                 this.isLooping = state.isLooping || false;
                 this.isMinimized = state.isMinimized || false;
                 this.playlistVisible = state.playlistVisible || false;

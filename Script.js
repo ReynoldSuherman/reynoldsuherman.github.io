@@ -24,7 +24,8 @@ const greetings = [
 let currentGreetingIndex = 0;
 let currentCharIndex = 0;
 let isDeleting = false;
-let typingSpeed = 150;
+const typingSpeed = 150;
+const deletingSpeed = 75;
 let pauseTime = 2000;
 
 function typeWriter() {
@@ -61,10 +62,9 @@ function typeWriter() {
             setTimeout(typeWriter, 500); // Pause before starting next greeting
             return;
         }
-        typingSpeed = 100; // Faster when deleting
     }
 
-    setTimeout(typeWriter, typingSpeed);
+    setTimeout(typeWriter, isDeleting ? deletingSpeed : typingSpeed);
 }
 
 // Animate progress bars - simplified and more reliable
@@ -107,7 +107,11 @@ function animateProgressBars() {
 }
 
 // Function to initialize all animations
+let animationsInitialized = false;
 function initializeAnimations() {
+    if (animationsInitialized) return;
+    animationsInitialized = true;
+
     // Start typing effect
     setTimeout(typeWriter, 1000);
 
@@ -213,12 +217,12 @@ if (document.getElementById("github-name")) {
             const githubPublicRepos = document.getElementById("github-public-repos");
             const githubGists = document.getElementById("github-gists");
 
-            if (githubName) githubName.textContent = `Username: ${data.login || 'N/A'}`;
-            if (githubRepos) githubRepos.textContent = `Public Repositories: ${data.public_repos || 0}`;
-            if (githubFollowers) githubFollowers.textContent = `Followers: ${data.followers || 0}`;
-            if (githubFollowing) githubFollowing.textContent = `Following: ${data.following || 0}`;
-            if (githubPublicRepos) githubPublicRepos.textContent = `Public Repos: ${data.public_repos || 0}`;
-            if (githubGists) githubGists.textContent = `Gists: ${data.public_gists || 0}`;
+            if (githubName) githubName.textContent = data.login || 'N/A';
+            if (githubRepos) githubRepos.textContent = data.public_repos || 0;
+            if (githubFollowers) githubFollowers.textContent = data.followers || 0;
+            if (githubFollowing) githubFollowing.textContent = data.following || 0;
+            if (githubPublicRepos) githubPublicRepos.textContent = data.public_repos || 0;
+            if (githubGists) githubGists.textContent = data.public_gists || 0;
         })
         .catch(error => {
             console.error('Error fetching GitHub data:', error);
@@ -230,12 +234,12 @@ if (document.getElementById("github-name")) {
             const githubPublicRepos = document.getElementById("github-public-repos");
             const githubGists = document.getElementById("github-gists");
 
-            if (githubName) githubName.textContent = "Username: Reeinold";
-            if (githubRepos) githubRepos.textContent = "Public Repositories: N/A";
-            if (githubFollowers) githubFollowers.textContent = "Followers: N/A";
-            if (githubFollowing) githubFollowing.textContent = "Following: N/A";
-            if (githubPublicRepos) githubPublicRepos.textContent = "Public Repos: N/A";
-            if (githubGists) githubGists.textContent = "Gists: N/A";
+            if (githubName) githubName.textContent = "Reeinold";
+            if (githubRepos) githubRepos.textContent = "N/A";
+            if (githubFollowers) githubFollowers.textContent = "N/A";
+            if (githubFollowing) githubFollowing.textContent = "N/A";
+            if (githubPublicRepos) githubPublicRepos.textContent = "N/A";
+            if (githubGists) githubGists.textContent = "N/A";
         });
 
     const statsUrl = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_title=true`;
