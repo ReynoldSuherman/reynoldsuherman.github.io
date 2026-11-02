@@ -233,20 +233,11 @@
             var value = Number(fill.getAttribute('data-percentage')) || 0;
             var clamped = Math.max(0, Math.min(100, value));
             var delay = 120 + index * 100;
-            var bar = fill.parentElement;
-            var container = bar && bar.parentElement;
 
             fill.setAttribute('data-percentage', String(clamped));
             fill.style.setProperty('--skill-fill', (clamped / 100).toFixed(3));
             fill.style.setProperty('--skill-delay', delay + 'ms');
-            if (bar) {
-                bar.style.width = '85%';
-                bar.style.maxWidth = '100%';
-            }
-            if (container) {
-                container.style.width = '100%';
-                container.style.maxWidth = '100%';
-            }
+            fill.style.width = '0';
             fill.classList.remove('animating', 'is-animating');
 
             requestAnimationFrame(function () {
