@@ -232,18 +232,22 @@
         fills.forEach(function (fill, index) {
             var value = Number(fill.getAttribute('data-percentage')) || 0;
             var clamped = Math.max(0, Math.min(100, value));
+            var delay = 120 + index * 100;
+
             fill.setAttribute('data-percentage', String(clamped));
             fill.style.setProperty('--skill-fill', (clamped / 100).toFixed(3));
+            fill.style.setProperty('--skill-delay', delay + 'ms');
             fill.style.animation = 'none';
-            fill.style.animationDelay = (120 + index * 100) + 'ms';
+            fill.style.transform = 'scaleX(0)';
             fill.classList.remove('animating');
 
             requestAnimationFrame(function () {
                 fill.style.animation = 'skillSlide 1.5s cubic-bezier(.22, 1, .36, 1) forwards';
-                fill.style.animationDelay = (120 + index * 100) + 'ms';
+                fill.style.animationDelay = delay + 'ms';
                 fill.classList.add('animating');
                 setTimeout(function () {
                     fill.classList.remove('animating');
+                    fill.style.filter = 'brightness(1)';
                 }, 1700);
             });
         });
@@ -254,7 +258,7 @@
         if (!sections.length) return;
 
         sections.forEach(function (section) {
-            section.removeAttribute('data-animated');
+            section.setAttribute('data-animated', 'true');
         });
 
         if (skillObserver) {
@@ -262,35 +266,8 @@
             skillObserver = null;
         }
 
-        function runAnimationIfVisible(section) {
-            if (section.hasAttribute('data-animated')) return;
-            section.setAttribute('data-animated', 'true');
-            setTimeout(animateProgressBars, 180);
-        }
-
-        if (!('IntersectionObserver' in window)) {
-            sections.forEach(function (section) {
-                runAnimationIfVisible(section);
-            });
-            return;
-        }
-
-        skillObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (!entry.isIntersecting) return;
-                runAnimationIfVisible(entry.target);
-                skillObserver.unobserve(entry.target);
-            });
-        }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
-
-        sections.forEach(function (section) {
-            var rect = section.getBoundingClientRect();
-            var visible = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
-            if (visible) {
-                runAnimationIfVisible(section);
-            } else {
-                skillObserver.observe(section);
-            }
+        requestAnimationFrame(function () {
+            animateProgressBars();
         });
     }
 
