@@ -5,9 +5,14 @@
 (function () {
     'use strict';
 
+    var APP_VERSION = '20261102-v1';
     var THEME_KEY = 'rrn-theme';
     var THEME_FILES = { modern: 'Theme.css', classic: 'Style.css' };
     var MAIN_PAGES = ['index.html', 'About.html', 'Portofolio.html', ''];
+
+    function withCacheBust(fileName) {
+        return fileName + '?v=' + APP_VERSION;
+    }
 
     /* ---------------------------------------------------------------------
        Theme
@@ -28,14 +33,15 @@
 
     function swapStylesheet(theme) {
         var href = THEME_FILES[theme] || THEME_FILES.modern;
+        var finalHref = withCacheBust(href);
         var current = document.getElementById('theme-css');
 
-        if (current && current.getAttribute('href') === href) return;
+        if (current && current.getAttribute('href') === finalHref) return;
 
         var next = document.createElement('link');
         next.id = 'theme-css';
         next.rel = 'stylesheet';
-        next.href = href;
+        next.href = finalHref;
         next.addEventListener('load', function () {
             if (current && current.parentNode) current.parentNode.removeChild(current);
         });

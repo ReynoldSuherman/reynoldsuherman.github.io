@@ -8,12 +8,13 @@
     <script>
         (function () {
             var theme = 'modern';
+            var assetVersion = '20261102-v1';
             try {
                 theme = localStorage.getItem('rrn-theme') === 'classic' ? 'classic' : 'modern';
             } catch (e) { /* storage blocked */ }
             document.documentElement.setAttribute('data-theme', theme);
             document.documentElement.className += ' js';
-            document.write('<link id="theme-css" rel="stylesheet" href="' + (theme === 'classic' ? 'Style.css' : 'Theme.css') + '">');
+            document.write('<link id="theme-css" rel="stylesheet" href="' + (theme === 'classic' ? 'Style.css' : 'Theme.css') + '?v=' + assetVersion + '">');
         })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
