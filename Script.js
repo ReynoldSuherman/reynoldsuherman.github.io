@@ -1,464 +1,443 @@
-console.log('Script.js loaded successfully');
+/* ==========================================================================
+   Reeinold Portfolio — page behaviour
+   Typewriter, skill bars, easter egg. Safe to re-run after soft navigation.
+   ========================================================================== */
+(function () {
+    'use strict';
 
-// Typing effect for multilingual greetings
-const greetings = [
-    "Hello",
-    "Halo",
-    "Hola",
-    "Bonjour",
-    "Ciao",
-    "你好",
-    "안녕하세요",
-    "Guten Tag",
-    "こんにちは",
-    "مرحبا",
-    "Привет",
-    "Olá",
-    "नमस्ते",
-    "Merhaba",
-    "Hallo",
-    "Hej",
-    "สวัสดี"
-];
+    /* ---------------------------------------------------------------------
+       Typing effect — "hello" in many languages
+       --------------------------------------------------------------------- */
+    var greetings = [
+        { word: 'Hello', lang: 'English' },
+        { word: 'Halo', lang: 'Indonesia' },
+        { word: 'Hola', lang: 'Español' },
+        { word: 'Bonjour', lang: 'Français' },
+        { word: 'Ciao', lang: 'Italiano' },
+        { word: 'Hallo', lang: 'Deutsch' },
+        { word: 'Olá', lang: 'Português' },
+        { word: 'Привет', lang: 'Русский' },
+        { word: 'こんにちは', lang: '日本語' },
+        { word: '你好', lang: '中文' },
+        { word: '안녕하세요', lang: '한국어' },
+        { word: 'नमस्ते', lang: 'हिन्दी' },
+        { word: 'Merhaba', lang: 'Türkçe' },
+        { word: 'Hej', lang: 'Svenska' },
+        { word: 'สวัสดี', lang: 'ไทย' },
+        { word: 'مرحبا', lang: 'العربية' },
+        { word: 'Xin chào', lang: 'Tiếng Việt' },
+        { word: 'Kumusta', lang: 'Filipino' },
+        { word: 'Zdravo', lang: 'Srpski' },
+        { word: 'Ahoj', lang: 'Čeština' },
+        { word: 'Szia', lang: 'Magyar' },
+        { word: 'درود', lang: 'فارسی' },
+        { word: 'Γειά σου', lang: 'Ελληνικά' },
+        { word: 'Hei', lang: 'Norsk' },
+        { word: 'Terve', lang: 'Suomi' },
+        { word: 'Aloha', lang: 'Hawaiʻi' },
+        { word: 'שלום', lang: 'עברית' },
+        { word: 'Jambo', lang: 'Kiswahili' },
+        { word: 'Sawubona', lang: 'isiZulu' },
+        { word: 'Halló', lang: 'Íslenska' },
+        { word: 'Përshëndetje', lang: 'Shqip' },
+        { word: 'Labas', lang: 'Lietuvių' },
+        { word: 'Sveiki', lang: 'Latviešu' },
+        { word: 'Tere', lang: 'Eesti' },
+        { word: 'Bună', lang: 'Română' },
+        { word: 'Salut', lang: 'Català' },
+        { word: 'Dia duit', lang: 'Gaeilge' },
+        { word: 'Helo', lang: 'Cymraeg' },
+        { word: 'Salve', lang: 'Latina' },
+        { word: 'Cześć', lang: 'Polski' },
+        { word: 'Salom', lang: 'Oʻzbekcha' },
+        { word: 'Sugeng', lang: 'Jawa' },
+        { word: 'Wilujeng', lang: 'Sunda' },
+        { word: 'Mejuah-juah', lang: 'Batak' },
+        { word: 'Tabe', lang: 'Bugis' },
+        { word: 'Kaixo', lang: 'Euskara' },
+        { word: 'Ia ora na', lang: 'Reo Tahiti' },
+        { word: 'Bula', lang: 'Vosa Vakaviti' },
+        { word: 'Salam', lang: 'Melayu' },
+        { word: 'Namaskar', lang: 'मराठी' }
+    ];
 
-let currentGreetingIndex = 0;
-let currentCharIndex = 0;
-let isDeleting = false;
-const typingSpeed = 150;
-const deletingSpeed = 75;
-let pauseTime = 2000;
+    // Defensive dedupe: never show the same word or the same language twice.
+    (function dedupeGreetings() {
+        var words = Object.create(null);
+        var langs = Object.create(null);
 
-function typeWriter() {
-    const greetingElement = document.getElementById('Greetings');
-
-    // Only run if the Greetings element exists (only on index.html)
-    if (!greetingElement) {
-        console.log('Greetings element not found, skipping typewriter effect');
-        return;
-    }
-
-    const currentGreeting = greetings[currentGreetingIndex];
-
-    if (!isDeleting) {
-        // Typing effect
-        greetingElement.textContent = currentGreeting.substring(0, currentCharIndex + 1);
-        currentCharIndex++;
-
-        if (currentCharIndex === currentGreeting.length) {
-            // Finished typing, pause before deleting
-            isDeleting = true;
-            setTimeout(typeWriter, pauseTime);
-            return;
-        }
-    } else {
-        // Deleting effect
-        greetingElement.textContent = currentGreeting.substring(0, currentCharIndex);
-        currentCharIndex--;
-
-        if (currentCharIndex < 0) {
-            // Finished deleting, move to next greeting
-            isDeleting = false;
-            currentGreetingIndex = (currentGreetingIndex + 1) % greetings.length;
-            setTimeout(typeWriter, 500); // Pause before starting next greeting
-            return;
-        }
-    }
-
-    setTimeout(typeWriter, isDeleting ? deletingSpeed : typingSpeed);
-}
-
-// Animate progress bars - simplified and more reliable
-function animateProgressBars() {
-    console.log('🎯 Starting progress bar animation...');
-    const progressFills = document.querySelectorAll('.progress-fill');
-    console.log('📊 Found', progressFills.length, 'progress bars');
-
-    if (progressFills.length === 0) {
-        console.log('❌ No progress bars found on this page');
-        return;
-    }
-
-    // Reset all bars to 0 first
-    progressFills.forEach(fill => {
-        fill.style.width = '0%';
-        fill.style.transition = 'none';
-        fill.style.opacity = '1';
-    });
-
-    // Force reflow to ensure reset takes effect
-    if (progressFills[0]) {
-        progressFills[0].offsetHeight;
-    }
-
-    // Small delay to ensure reset is complete
-    setTimeout(() => {
-        // Animate each bar with staggered timing
-        progressFills.forEach((fill, index) => {
-            const percentage = fill.getAttribute('data-percentage') || '0';
-            console.log('🎨 Animating bar', index + 1, 'to', percentage + '%');
-
-            setTimeout(() => {
-                fill.style.transition = 'width 2s cubic-bezier(0.4, 0, 0.2, 1)';
-                fill.style.width = percentage + '%';
-                console.log('✅ Set bar', index + 1, 'width to', percentage + '%');
-            }, index * 300); // Increased delay for better visibility
+        greetings = greetings.filter(function (item) {
+            if (!item || !item.word || !item.lang) return false;
+            var w = item.word.toLowerCase();
+            var l = item.lang.toLowerCase();
+            if (words[w] || langs[l]) return false;
+            words[w] = true;
+            langs[l] = true;
+            return true;
         });
-    }, 100);
-}
+    })();
 
-// Function to initialize all animations
-let animationsInitialized = false;
-function initializeAnimations() {
-    if (animationsInitialized) return;
-    animationsInitialized = true;
+    var typingSpeed = 85;
+    var deletingSpeed = 38;
+    var holdTime = 1500;
+    var gapTime = 300;
 
-    // Start typing effect
-    setTimeout(typeWriter, 1000);
-
-    // Set up scroll-triggered progress bar animation
-    setupScrollAnimations();
-}
-
-// Function to handle scroll-triggered animations
-function setupScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.3,
-        rootMargin: '0px 0px -50px 0px'
+    var typer = {
+        el: null,
+        wordEl: null,
+        langEl: null,
+        wordIndex: 0,
+        charIndex: 0,
+        deleting: false,
+        timer: null,
+        running: false,
+        paused: false
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const skillsSection = entry.target;
-                if (skillsSection && !skillsSection.hasAttribute('data-animated')) {
-                    skillsSection.setAttribute('data-animated', 'true');
-                    setTimeout(() => {
-                        animateProgressBars();
-                    }, 300);
-                }
-            }
-        });
-    }, observerOptions);
-
-    // Observe skills sections
-    const skillsSections = document.querySelectorAll('.skills-section');
-    skillsSections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Also trigger on page load if skills section is already visible
-    setTimeout(() => {
-        const skillsSection = document.querySelector('.skills-section');
-        if (skillsSection) {
-            const rect = skillsSection.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                if (!skillsSection.hasAttribute('data-animated')) {
-                    skillsSection.setAttribute('data-animated', 'true');
-                    animateProgressBars();
-                }
-            }
+    function stopTyping() {
+        if (typer.timer) {
+            clearTimeout(typer.timer);
+            typer.timer = null;
         }
-    }, 1000);
-}
-
-// Start animations when page loads
-document.addEventListener('DOMContentLoaded', initializeAnimations);
-
-// Also try to initialize immediately if DOM is already loaded
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    initializeAnimations();
-}
-
-// Only run GitHub API calls on pages that have GitHub elements
-if (document.getElementById("github-name")) {
-    const username = "Reeinold";  // Replace with your GitHub username
-    const apiUrl = `https://api.github.com/users/${username}`;
-
-    console.log('Fetching GitHub API:', apiUrl);
-
-    // Set default values first (only if elements exist)
-    const githubName = document.getElementById("github-name");
-    const githubRepos = document.getElementById("github-repos");
-    const githubFollowers = document.getElementById("github-followers");
-    const githubFollowing = document.getElementById("github-following");
-    const githubPublicRepos = document.getElementById("github-public-repos");
-    const githubGists = document.getElementById("github-gists");
-
-    if (githubName) githubName.textContent = "Loading...";
-    if (githubRepos) githubRepos.textContent = "Loading...";
-    if (githubFollowers) githubFollowers.textContent = "Loading...";
-    if (githubFollowing) githubFollowing.textContent = "Loading...";
-    if (githubPublicRepos) githubPublicRepos.textContent = "Loading...";
-    if (githubGists) githubGists.textContent = "Loading...";
-
-    // Create a timeout promise
-    const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Request timeout')), 5000); // 5 second timeout
-    });
-
-    // Race between fetch and timeout
-    Promise.race([
-        fetch(apiUrl).then(response => {
-            console.log('GitHub API response status:', response.status);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        }),
-        timeoutPromise
-    ])
-        .then(data => {
-            console.log('GitHub data received:', data);
-            // Update with actual data (only if elements exist)
-            const githubName = document.getElementById("github-name");
-            const githubRepos = document.getElementById("github-repos");
-            const githubFollowers = document.getElementById("github-followers");
-            const githubFollowing = document.getElementById("github-following");
-            const githubPublicRepos = document.getElementById("github-public-repos");
-            const githubGists = document.getElementById("github-gists");
-
-            if (githubName) githubName.textContent = data.login || 'N/A';
-            if (githubRepos) githubRepos.textContent = data.public_repos || 0;
-            if (githubFollowers) githubFollowers.textContent = data.followers || 0;
-            if (githubFollowing) githubFollowing.textContent = data.following || 0;
-            if (githubPublicRepos) githubPublicRepos.textContent = data.public_repos || 0;
-            if (githubGists) githubGists.textContent = data.public_gists || 0;
-        })
-        .catch(error => {
-            console.error('Error fetching GitHub data:', error);
-            // Set fallback values on error or timeout (only if elements exist)
-            const githubName = document.getElementById("github-name");
-            const githubRepos = document.getElementById("github-repos");
-            const githubFollowers = document.getElementById("github-followers");
-            const githubFollowing = document.getElementById("github-following");
-            const githubPublicRepos = document.getElementById("github-public-repos");
-            const githubGists = document.getElementById("github-gists");
-
-            if (githubName) githubName.textContent = "Reeinold";
-            if (githubRepos) githubRepos.textContent = "N/A";
-            if (githubFollowers) githubFollowers.textContent = "N/A";
-            if (githubFollowing) githubFollowing.textContent = "N/A";
-            if (githubPublicRepos) githubPublicRepos.textContent = "N/A";
-            if (githubGists) githubGists.textContent = "N/A";
-        });
-
-    const statsUrl = `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_title=true`;
-
-    console.log('Setting GitHub stats image URL:', statsUrl);
-
-    // Set a loading placeholder for the image
-    const githubCardImage = document.getElementById("github-card-image");
-    if (githubCardImage) {
-        githubCardImage.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcgR2l0SHViIFN0YXRzLi4uPC90ZXh0Pjwvc3ZnPg==";
-        githubCardImage.src = statsUrl;
+        typer.running = false;
+        typer.paused = false;
+        typer.el = null;
+        typer.wordEl = null;
+        typer.langEl = null;
     }
-}
 
-// Progress bar refresh function removed to prevent conflicts
+    function paintGreeting(word, language) {
+        if (typer.wordEl) typer.wordEl.textContent = word;
+        if (typer.langEl) typer.langEl.textContent = language || '';
+    }
 
-// Hidden Easter Egg for About Photo
-function showHiddenInterests() {
-    alert("selamat kamu menemukan hidden things 😊");
-
-    // Create modal for interests
-    const modal = document.createElement('div');
-    modal.id = 'hidden-modal';
-    modal.innerHTML = `
-        <div class="modal-overlay" onclick="closeHiddenModal()">
-            <div class="modal-content" onclick="event.stopPropagation()">
-                <div class="modal-header">
-                    <h2>🎮 Hidden Interests & Favorites 🎮</h2>
-                    <span class="close-btn" onclick="closeHiddenModal()">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <div class="interest-section">
-                        <h3>🎯 Suka Pergi ke Timezone</h3>
-                        <ul class="interest-list">
-                            <li>Maimai</li>
-                            <li>Wangan Midnight</li>
-                        </ul>
-                    </div>
-
-                    <div class="interest-section">
-                        <h3>🎭 Favorite VTubers & Anime Characters</h3>
-                        <ul class="interest-list">
-                            <li><strong>Aoi Nabi</strong> [Illustrator]</li>
-                            <li><strong>KAngle</strong> [Need Streamer Overload]</li>
-                            <li><strong>Twin Turbo</strong> [Uma Musume]</li>
-                            <li><strong>Loves Only you</strong> [Uma Musume]</li>
-                            <li><strong>Hishi Amazon</strong> [Uma Musume]</li>
-                            <li><strong>Ines</strong> [Arknights]</li>
-                            <li><strong>Ray</strong> [Arknights]</li>
-                            <li><strong>Mudrock</strong> [Arknights]</li>
-                            <li><strong>kureiji Ollie</strong> [hololive]</li>
-                            <li><strong>Nerissa Ravencroft</strong> [hololive]</li>
-                            <li><em>...and many more! 😄</em></li>
-                        </ul>
-                    </div>
-                    <div class="interest-section">
-                        <h3>🎵 Favorite song type</h3>
-                        <ul class="interest-list">
-                            <li>Lofi</li>
-                            <li>Hardbass</li>
-                            <li>EDM</li>
-                            <li>Pop 80 japanese</li>
-                            <li>And many more things......</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    // Add modal styles
-    const style = document.createElement('style');
-    style.textContent = `
-        #hidden-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10000;
+    function mountGreeting(el) {
+        if (!el.querySelector('.greet-word')) {
+            el.innerHTML =
+                '<span class="greet-label" aria-hidden="true">Say hello</span>' +
+                '<span class="greet-word"></span>' +
+                '<span class="greet-lang" aria-hidden="true"></span>';
         }
+        el.classList.add('is-ready');
+        el.setAttribute('aria-label', 'Hello dalam banyak bahasa');
+        typer.wordEl = el.querySelector('.greet-word');
+        typer.langEl = el.querySelector('.greet-lang');
+    }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
+    function typeStep() {
+        var el = typer.el;
+        if (!el || !el.isConnected) {
+            stopTyping();
+            return;
         }
+        if (typer.paused) return;
 
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: slideUp 0.3s ease;
-        }
+        var entry = greetings[typer.wordIndex];
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        if (!typer.deleting) {
+            typer.charIndex++;
+            paintGreeting(entry.word.slice(0, typer.charIndex), '');
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            border-bottom: 2px solid olivedrab;
-            background: linear-gradient(135deg, olivedrab, #4a5d23);
-            color: white;
-            border-radius: 12px 12px 0 0;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .close-btn {
-            font-size: 28px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .close-btn:hover {
-            transform: scale(1.2);
-        }
-
-        .modal-body {
-            padding: 25px;
-        }
-
-        .interest-section {
-            margin-bottom: 25px;
-        }
-
-        .interest-section h3 {
-            color: olivedrab;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #e9ecef;
-            padding-bottom: 5px;
-        }
-
-        .interest-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .interest-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.2s;
-        }
-
-        .interest-list li:hover {
-            background-color: #f8f9fa;
-            padding-left: 10px;
-        }
-
-        .interest-list li:last-child {
-            border-bottom: none;
-            font-style: italic;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                margin: 20px;
+            if (typer.charIndex >= entry.word.length) {
+                paintGreeting(entry.word, entry.lang);
+                typer.deleting = true;
+                typer.timer = setTimeout(typeStep, holdTime);
+                return;
             }
+            typer.timer = setTimeout(typeStep, typingSpeed);
+        } else {
+            typer.charIndex--;
+            paintGreeting(entry.word.slice(0, Math.max(typer.charIndex, 0)), '');
 
-            .modal-header {
-                padding: 15px 20px;
+            if (typer.charIndex <= 0) {
+                typer.deleting = false;
+                typer.wordIndex = (typer.wordIndex + 1) % greetings.length;
+                typer.timer = setTimeout(typeStep, gapTime);
+                return;
             }
-
-            .modal-body {
-                padding: 20px;
-            }
+            typer.timer = setTimeout(typeStep, deletingSpeed);
         }
-    `;
-    document.head.appendChild(style);
-}
+    }
 
-function closeHiddenModal() {
-    const modal = document.getElementById('hidden-modal');
-    if (modal) {
+    function startTyping() {
+        var el = document.getElementById('Greetings');
+        if (!el) return;
+
+        stopTyping();
+
+        typer.el = el;
+        mountGreeting(el);
+
+        var reduceMotion = window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (reduceMotion) {
+            var entry = greetings[0];
+            paintGreeting(entry.word, entry.lang);
+            el.classList.add('is-static');
+            return;
+        }
+
+        typer.wordIndex = 0;
+        typer.charIndex = 0;
+        typer.deleting = false;
+        typer.running = true;
+        typer.timer = setTimeout(typeStep, 650);
+    }
+
+    // Save battery: pause while the tab is in the background.
+    document.addEventListener('visibilitychange', function () {
+        if (!typer.running || !typer.el) return;
+
+        if (document.hidden) {
+            typer.paused = true;
+            if (typer.timer) {
+                clearTimeout(typer.timer);
+                typer.timer = null;
+            }
+            return;
+        }
+
+        if (typer.paused) {
+            typer.paused = false;
+            typer.timer = setTimeout(typeStep, 500);
+        }
+    });
+
+    /* ---------------------------------------------------------------------
+       Skill bars
+       --------------------------------------------------------------------- */
+    var skillObserver = null;
+
+    function animateProgressBars() {
+        var fills = document.querySelectorAll('.progress-fill');
+        if (!fills.length) return;
+
+        fills.forEach(function (fill) {
+            fill.style.transition = 'none';
+            fill.style.width = '0%';
+        });
+
+        // force reflow
+        if (fills[0]) void fills[0].offsetWidth;
+
+        fills.forEach(function (fill, index) {
+            var percentage = Number(fill.getAttribute('data-percentage')) || 0;
+            setTimeout(function () {
+                fill.style.transition = 'width 1.6s cubic-bezier(.4,0,.2,1)';
+                fill.style.width = percentage + '%';
+                fill.classList.add('animating');
+                setTimeout(function () { fill.classList.remove('animating'); }, 2000);
+            }, 120 + index * 90);
+        });
+    }
+
+    function initSkills() {
+        var sections = document.querySelectorAll('.skills-section');
+        if (!sections.length) return;
+
+        sections.forEach(function (section) {
+            section.removeAttribute('data-animated');
+        });
+
+        if (skillObserver) {
+            skillObserver.disconnect();
+            skillObserver = null;
+        }
+
+        if (!('IntersectionObserver' in window)) {
+            animateProgressBars();
+            sections.forEach(function (s) { s.setAttribute('data-animated', 'true'); });
+            return;
+        }
+
+        skillObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                if (entry.target.hasAttribute('data-animated')) return;
+                entry.target.setAttribute('data-animated', 'true');
+                setTimeout(animateProgressBars, 160);
+            });
+        }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+
+        sections.forEach(function (section) {
+            // Already on screen? Animate right away.
+            var rect = section.getBoundingClientRect();
+            var visible = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+            if (visible) {
+                section.setAttribute('data-animated', 'true');
+                setTimeout(animateProgressBars, 300);
+            } else {
+                skillObserver.observe(section);
+            }
+        });
+    }
+
+    /* ---------------------------------------------------------------------
+       Easter egg (About page profile photo)
+       --------------------------------------------------------------------- */
+    var modalStyleInjected = false;
+
+    function injectModalStyles() {
+        if (modalStyleInjected || document.getElementById('rrn-modal-styles')) return;
+        modalStyleInjected = true;
+
+        var style = document.createElement('style');
+        style.id = 'rrn-modal-styles';
+        style.textContent = [
+            '#hidden-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px}',
+            '#hidden-modal .modal-overlay{position:absolute;inset:0;background:rgba(18,23,10,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:rrnFade .3s ease}',
+            '#hidden-modal .modal-content{position:relative;width:min(620px,100%);max-height:82vh;overflow:auto;background:var(--paper,#fffdf7);color:var(--ink,#1e2417);border:1px solid var(--line,#deddc9);border-radius:22px;box-shadow:0 40px 90px -40px rgba(0,0,0,.6);animation:rrnUp .35s cubic-bezier(.2,.7,.2,1)}',
+            '#hidden-modal .modal-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:linear-gradient(140deg,#33421a,#5a771f);color:#f6f9ea}',
+            '#hidden-modal .modal-header h2{margin:0;font-size:1.15rem;font-weight:600;font-family:var(--font-body,Rubik,sans-serif)}',
+            '#hidden-modal .close-btn{appearance:none;border:0;background:rgba(255,255,255,.14);color:#fff;width:34px;height:34px;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;transition:background .2s,transform .2s;flex-shrink:0}',
+            '#hidden-modal .close-btn:hover{background:rgba(255,255,255,.28);transform:rotate(90deg)}',
+            '#hidden-modal .modal-body{padding:24px}',
+            '#hidden-modal .interest-section{margin-bottom:22px}',
+            '#hidden-modal .interest-section:last-child{margin-bottom:0}',
+            '#hidden-modal .interest-section h3{margin:0 0 10px;font-size:.72rem;font-family:var(--font-mono,"SUSE Mono",monospace);letter-spacing:.16em;text-transform:uppercase;color:var(--olive-deep,#4a5d23)}',
+            '#hidden-modal .interest-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}',
+            '#hidden-modal .interest-list li{padding:9px 10px;border-radius:8px;border-bottom:1px solid var(--line,#deddc9);font-size:.9rem;color:var(--ink-soft,#5b6350);transition:background .2s,color .2s,padding-left .2s}',
+            '#hidden-modal .interest-list li:hover{background:rgba(107,142,35,.09);color:var(--ink,#1e2417);padding-left:16px}',
+            '#hidden-modal .interest-list li:last-child{border-bottom:0}',
+            '@keyframes rrnFade{from{opacity:0}to{opacity:1}}',
+            '@keyframes rrnUp{from{opacity:0;transform:translateY(26px) scale(.98)}to{opacity:1;transform:none}}',
+            '@media(max-width:600px){#hidden-modal .modal-content{max-height:88vh}#hidden-modal .modal-body{padding:18px}#hidden-modal .modal-header{padding:16px 18px}}'
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function closeHiddenModal() {
+        var modal = document.getElementById('hidden-modal');
+        if (!modal) return;
         modal.remove();
+        document.body.style.overflow = '';
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
     }
-}
 
-// Add click event to profile photo (only on About page)
-document.addEventListener('DOMContentLoaded', function() {
-    // Only activate Easter egg on About.html page
-    const isAboutPage = window.location.pathname.includes('About.html') ||
-                        document.querySelector('title')?.textContent?.includes('About');
+    var lastFocusedElement = null;
 
-    const profilePhoto = document.querySelector('.profile-photo');
-    if (profilePhoto && isAboutPage) {
-        profilePhoto.style.cursor = 'pointer';
-        profilePhoto.addEventListener('click', showHiddenInterests);
+    function showHiddenInterests() {
+        if (document.getElementById('hidden-modal')) return;
+
+        injectModalStyles();
+        lastFocusedElement = document.activeElement;
+
+        var interests = [
+            { title: 'Suka pergi ke Timezone', items: ['Maimai', 'Wangan Midnight'] },
+            {
+                title: 'Favorite VTubers & Anime Characters',
+                items: [
+                    '<strong>Aoi Nabi</strong> [Illustrator]',
+                    '<strong>KAngle</strong> [Needy Streamer Overload]',
+                    '<strong>Twin Turbo</strong> [Uma Musume]',
+                    '<strong>Loves Only You</strong> [Uma Musume]',
+                    '<strong>Hishi Amazon</strong> [Uma Musume]',
+                    '<strong>Ines</strong> [Arknights]',
+                    '<strong>Ray</strong> [Arknights]',
+                    '<strong>Mudrock</strong> [Arknights]',
+                    '<strong>Kureiji Ollie</strong> [hololive]',
+                    '<strong>Nerissa Ravencroft</strong> [hololive]',
+                    '<em>...and many more! 😄</em>'
+                ]
+            },
+            { title: 'Favorite song type', items: ['Lofi', 'Hardbass', 'EDM', 'Pop 80s Japanese', 'And many more things...'] }
+        ];
+
+        var modal = document.createElement('div');
+        modal.id = 'hidden-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-label', 'Hidden interests and favorites');
+
+        var sections = interests.map(function (section) {
+            var list = section.items.map(function (item) {
+                return '<li>' + item + '</li>';
+            }).join('');
+            return '<div class="interest-section"><h3>' + section.title + '</h3><ul class="interest-list">' + list + '</ul></div>';
+        }).join('');
+
+        modal.innerHTML =
+            '<div class="modal-overlay" data-close-modal></div>' +
+            '<div class="modal-content">' +
+                '<div class="modal-header">' +
+                    '<h2>🎮 Hidden Interests &amp; Favorites</h2>' +
+                    '<button type="button" class="close-btn" data-close-modal aria-label="Tutup">&times;</button>' +
+                '</div>' +
+                '<div class="modal-body">' + sections + '</div>' +
+            '</div>';
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+
+        modal.querySelectorAll('[data-close-modal]').forEach(function (node) {
+            node.addEventListener('click', closeHiddenModal);
+        });
+
+        var closeBtn = modal.querySelector('.close-btn');
+        if (closeBtn) closeBtn.focus();
+
+        document.addEventListener('keydown', function onKey(e) {
+            if (e.key === 'Escape') {
+                document.removeEventListener('keydown', onKey);
+                closeHiddenModal();
+            }
+        });
     }
-});
 
-// Music player moved to separate file: music-player.js
+    function initEasterEgg() {
+        var photo = document.querySelector('.profile-photo');
+        if (!photo) return;
+
+        var isAboutPage = /About\.html$/i.test(window.location.pathname) ||
+            (document.title || '').toLowerCase().indexOf('about') === 0;
+
+        photo.style.cursor = isAboutPage ? 'pointer' : 'zoom-in';
+        if (isAboutPage) {
+            photo.onclick = showHiddenInterests;
+            photo.setAttribute('title', 'Klik untuk kejutan kecil');
+            photo.setAttribute('role', 'button');
+            photo.setAttribute('tabindex', '0');
+            photo.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    showHiddenInterests();
+                }
+            });
+        } else {
+            photo.onclick = null;
+            photo.removeAttribute('role');
+            photo.removeAttribute('tabindex');
+        }
+    }
+
+    /* ---------------------------------------------------------------------
+       Misc
+       --------------------------------------------------------------------- */
+    function updateYear() {
+        document.querySelectorAll('[data-year]').forEach(function (node) {
+            node.textContent = String(new Date().getFullYear());
+        });
+    }
+
+    function initPage() {
+        startTyping();
+        initSkills();
+        initEasterEgg();
+        updateYear();
+        document.dispatchEvent(new CustomEvent('rrn:page-ready'));
+    }
+
+    window.PortfolioPage = {
+        initPage: initPage,
+        closeHiddenModal: closeHiddenModal
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPage, { once: true });
+    } else {
+        initPage();
+    }
+})();

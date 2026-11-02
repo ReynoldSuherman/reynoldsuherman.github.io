@@ -990,3 +990,263 @@ padding: 20px;
 .reyn{
     font-family: 'Russo one',sans-serif;
 }
+/* ==========================================================================
+   Compatibility layer for the newer markup.
+   Style.css is only loaded when the "Classic" theme is active, so these rules
+   only need to restore the original look and hide fresh-theme decorations.
+   ========================================================================== */
+
+html[data-theme="classic"] #page { overflow: visible; }
+html[data-theme="classic"] figure { margin: 0; }
+
+html[data-theme="classic"] .skip-link,
+html[data-theme="classic"] .eyebrow,
+html[data-theme="classic"] .hero-role,
+html[data-theme="classic"] .hero-lead,
+html[data-theme="classic"] .hero-actions,
+html[data-theme="classic"] .hero-meta,
+html[data-theme="classic"] .hero-visual,
+html[data-theme="classic"] .ticker,
+html[data-theme="classic"] .nav-brand,
+html[data-theme="classic"] .fact-grid,
+html[data-theme="classic"] .about-badge,
+html[data-theme="classic"] .project-index,
+html[data-theme="classic"] .project-tags,
+html[data-theme="classic"] .filter-bar,
+html[data-theme="classic"] .cta,
+html[data-theme="classic"] .site-footer,
+html[data-theme="classic"] .theme-switch-label {
+    display: none !important;
+}
+
+html[data-theme="classic"] .hero-inner { display: block; }
+html[data-theme="classic"] #Header.hero { border-radius: 0; padding: 50px 20px; }
+html[data-theme="classic"] #Header.hero::before,
+html[data-theme="classic"] #Header.hero::after { display: none; }
+
+html[data-theme="classic"] #SiteNav {
+    position: static;
+    width: auto;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+html[data-theme="classic"] .theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 14px;
+    padding: 3px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    background: #f7f7f2;
+}
+html[data-theme="classic"] .theme-switch button {
+    appearance: none;
+    border: 0;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: transparent;
+    color: #555;
+    font-family: 'SUSE Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+html[data-theme="classic"] .theme-switch button[aria-pressed="true"] {
+    background: olivedrab;
+    color: #fff;
+}
+
+html[data-theme="classic"] .section-head {
+    display: block;
+    margin: 0 0 18px;
+    padding: 0;
+    border: 0;
+    text-align: center;
+}
+html[data-theme="classic"] .section-head h2 {
+    max-width: none;
+    font-size: 1.9rem;
+    color: olivedrab;
+    margin-bottom: 8px;
+}
+html[data-theme="classic"] .section-sub {
+    max-width: 70ch;
+    margin: 0 auto;
+    color: #666;
+    font-size: 0.95rem;
+}
+html[data-theme="classic"] .kicker {
+    display: block;
+    margin: 0 0 6px;
+    font-family: 'SUSE Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8a9a72;
+}
+html[data-theme="classic"] .kicker::before { display: none; }
+
+html[data-theme="classic"] .btn {
+    display: inline-block;
+    padding: 11px 22px;
+    border: 2px solid olivedrab;
+    border-radius: 6px;
+    background: olivedrab;
+    color: #fff;
+    font-family: 'SUSE Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+html[data-theme="classic"] .btn:hover {
+    background: #fff;
+    color: olivedrab;
+    transform: translateY(-2px);
+}
+
+html[data-theme="classic"] .about-content { align-items: flex-start; }
+html[data-theme="classic"] .about-media { flex: 0 0 auto; }
+
+html[data-theme="classic"] .bio-grid,
+html[data-theme="classic"] .biodata-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+html[data-theme="classic"] .bio-card,
+html[data-theme="classic"] .biodata-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.06);
+}
+html[data-theme="classic"] .bio-card h3,
+html[data-theme="classic"] .biodata-card h3 {
+    margin: 0 0 10px;
+    color: olivedrab;
+    font-size: 1rem;
+}
+html[data-theme="classic"] .bio-card p,
+html[data-theme="classic"] .biodata-card li {
+    color: #555;
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+html[data-theme="classic"] .biodata-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+}
+html[data-theme="classic"] .biodata-card ul ul { padding-left: 12px; }
+html[data-theme="classic"] .biodata-section { margin-top: 40px; }
+html[data-theme="classic"] .biodata-section h2 { color: olivedrab; }
+
+html[data-theme="classic"] .skill-item { background-color: #f8f9fa; }
+html[data-theme="classic"] .languages-section { background-color: #f8f9fa; }
+html[data-theme="classic"] .languages-section h3 { text-align: center; }
+html[data-theme="classic"] .language-item { background-color: #fff; }
+html[data-theme="classic"] .social-link:hover { transform: translateY(-2px); }
+
+html[data-theme="classic"] .filter-empty { display: none !important; }
+
+/* ==========================================================================
+   Classic theme — greeting + page transition compatibility
+   ========================================================================== */
+
+html[data-theme="classic"] #Greetings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    min-height: 2.2em;
+    margin: 10px 0 18px;
+    font-family: 'SUSE Mono', ui-monospace, monospace;
+}
+
+html[data-theme="classic"] #Greetings .greet-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.58);
+}
+html[data-theme="classic"] #Greetings .greet-label::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+}
+
+html[data-theme="classic"] #Greetings .greet-word {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #e9f8c4;
+}
+html[data-theme="classic"] #Greetings .greet-word::after {
+    content: "";
+    display: inline-block;
+    width: 0.45em;
+    height: 1em;
+    margin-left: 5px;
+    vertical-align: -0.12em;
+    background: #d7ee9a;
+    animation: classicCaret 1.05s steps(2, start) infinite;
+}
+@keyframes classicCaret { 50% { opacity: 0; } }
+
+html[data-theme="classic"] #Greetings .greet-lang {
+    padding: 2px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e2efc6;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+html[data-theme="classic"] #Greetings .greet-lang:not(:empty) { opacity: 1; }
+
+html[data-theme="classic"] #Greetings.greeting--compact { margin-top: 10px; }
+html[data-theme="classic"] #Greetings.greeting--compact .greet-word { font-size: 0.98rem; }
+
+html[data-theme="classic"] #Greetings.is-static .greet-word::after { animation: none; }
+
+html[data-theme="classic"] #page { transition: opacity 0.18s ease; }
+html[data-theme="classic"] #page.is-leaving {
+    opacity: 0;
+    pointer-events: none;
+}
+html[data-theme="classic"] #page.page-enter {
+    animation: classicPageIn 0.42s ease both;
+}
+@keyframes classicPageIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 480px) {
+    html[data-theme="classic"] #Greetings .greet-label { display: none; }
+}

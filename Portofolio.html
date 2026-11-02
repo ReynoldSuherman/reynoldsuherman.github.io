@@ -1,178 +1,235 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="modern">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style.css">
+    <meta name="theme-color" content="#33421a">
+    <meta name="description" content="Kumpulan project Reynold Suherman (Reeinold) — web, software, dan eksperimen desain.">
+    <script>
+        (function () {
+            var theme = 'modern';
+            try {
+                theme = localStorage.getItem('rrn-theme') === 'classic' ? 'classic' : 'modern';
+            } catch (e) { /* storage blocked */ }
+            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.className += ' js';
+            document.write('<link id="theme-css" rel="stylesheet" href="' + (theme === 'classic' ? 'Style.css' : 'Theme.css') + '">');
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    <title>Portfolio - Reeinold's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <title>Portfolio — Reeinold's Portfolio</title>
 </head>
 <body>
-    <div id="Header">
-        <p id="Reeinold">Reeinold's Portfolio</p>
-        <p id="Description"><b>My Projects</b></p>
+    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+    <div id="page">
+        <header id="Header" class="hero page-hero">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <p class="eyebrow">Portfolio · Selected work</p>
+                    <h1 id="Reeinold">
+                        My projects<span class="accent-dot">.</span>
+                        <span class="hero-role">Web / Software / Design</span>
+                    </h1>
+                    <p id="Description"><b>Berikut kumpulan project yang sudah saya kerjakan.</b></p>
+                    <p id="Greetings" class="greeting greeting--compact"></p>
+                    <p class="hero-lead">Dari tugas kuliah sampai eksperimen pribadi — semuanya punya cerita dan pelajaran masing-masing.</p>
+                </div>
+            </div>
+        </header>
+
+        <nav id="SiteNav" aria-label="Navigasi utama">
+            <a class="nav-brand" href="index.html" aria-label="Reeinold — beranda">R<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Main</a>
+                <a href="About.html">About</a>
+                <a href="Portofolio.html" class="is-active" aria-current="page">Portfolio</a>
+                <a href="https://github.com/Reeinold?tab=activity_feed" target="_blank" rel="noopener noreferrer">GitHub <span class="ext" aria-hidden="true">↗</span></a>
+            </div>
+            <div class="theme-switch" role="group" aria-label="Pilih tema tampilan">
+                <span class="theme-switch-label">Theme</span>
+                <button type="button" data-theme-choice="modern" aria-pressed="true">Fresh</button>
+                <button type="button" data-theme-choice="classic" aria-pressed="false">Classic</button>
+            </div>
+        </nav>
+        <hr class="tick">
+
+        <main id="main">
+            <section class="Portfolio" id="projects">
+                <div class="section-head" data-reveal>
+                    <p class="kicker">01 — Archive</p>
+                    <h2>Everything, in one <em>place</em>.</h2>
+                    <p class="section-sub">Filter berdasarkan jenis project. Klik gambar untuk memperbesar, atau buka project langsung lewat tombol yang tersedia.</p>
+                </div>
+
+                <div class="filter-bar" role="group" aria-label="Filter project" data-reveal>
+                    <span class="filter-label">Filter</span>
+                    <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+                    <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+                    <button type="button" class="filter-btn" data-filter="software" aria-pressed="false">Software</button>
+                    <button type="button" class="filter-btn" data-filter="java" aria-pressed="false">Java</button>
+                    <button type="button" class="filter-btn" data-filter="hci" aria-pressed="false">HCI</button>
+                </div>
+
+                <div class="project-grid">
+                    <article class="project" data-categories="web hci" data-reveal>
+                        <span class="project-index" aria-hidden="true">01</span>
+                        <h3>Website InEdu</h3>
+                        <div class="project-gallery">
+                            <figure class="gallery-item">
+                                <img src="./Footage/Websitee1.png" alt="Tampilan utama website InEdu" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Main Interface</h4><p>Tampilan utama InEdu</p></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="./Footage/Websitee2.png" alt="Halaman tentang website InEdu" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Tentang Kami</h4><p>Halaman tentang website InEdu</p></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="./Footage/Websitee3.png" alt="Fitur aksesibilitas website InEdu" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Aksesibilitas</h4><p>Fitur aksesibilitas</p></figcaption>
+                            </figure>
+                        </div>
+                        <p>Website edukasi yang support untuk para disabilitas, dibuat saat project lecture HCI (Human Computer Interaction) dengan semangat SDG 10. Website ini terbuka untuk siapa pun dan punya fitur aksesibilitas seperti TTS yang mendukung bahasa Indonesia dan Inggris, tema terang/gelap/sepia, serta mode buta warna: tritanopia, deuteranopia, dan protanopia.</p>
+                        <div class="project-tags"><span>Web</span><span>HCI</span><span>Accessibility</span></div>
+                        <a href="https://reynoldsuherman.github.io/project-InEdu/" target="_blank" rel="noopener noreferrer">View Project</a>
+                    </article>
+
+                    <article class="project" data-categories="web" data-reveal>
+                        <span class="project-index" aria-hidden="true">02</span>
+                        <h3>Website BSLC</h3>
+                        <div class="project-gallery">
+                            <figure class="gallery-item">
+                                <img src="./Footage/Websiteee1.png" alt="Tampilan utama website BSLC" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Main Interface</h4><p>Tampilan utama Website BSLC</p></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="./Footage/Websiteee2.png" alt="Halaman tentang website BSLC" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Second Page</h4><p>Halaman tentang website BSLC</p></figcaption>
+                            </figure>
+                        </div>
+                        <p>Website pertama kali saya buat untuk seleksi masuk BSLC (Binus Student Learning Center) divisi IT. Dibuat hanya dengan HTML dan CSS, mereplika design Figma yang diberikan menjadi website yang sama persis — semua elemen berfungsi.</p>
+                        <div class="project-tags"><span>Web</span><span>HTML</span><span>CSS</span></div>
+                        <a href="https://reynoldsuherman.github.io/Project-BSLC/" target="_blank" rel="noopener noreferrer">View Project</a>
+                    </article>
+
+                    <article class="project" data-categories="web hci" data-reveal>
+                        <span class="project-index" aria-hidden="true">03</span>
+                        <h3>Website VSTravel</h3>
+                        <div class="project-gallery">
+                            <figure class="gallery-item">
+                                <img src="./Footage/Website1.png" alt="Tampilan utama website VSTravel" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Main Interface</h4><p>Tampilan utama VSTravel</p></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="./Footage/Website2.png" alt="Halaman destinasi website VSTravel" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Destinasi</h4><p>Kumpulan destinasi dari penjuru dunia dan lokal</p></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="./Footage/Website3.png" alt="Halaman pesan website VSTravel" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Pesan</h4><p>Halaman pesan yang interaktif</p></figcaption>
+                            </figure>
+                        </div>
+                        <p>Project website untuk Lab Human Computer Interaction (HCI) tentang website travel. Dibuat sesuai soal yang diberikan, dengan kebebasan pada layout, tulisan, dan isi — tetap mengikuti panduan dan ketentuan yang berlaku.</p>
+                        <div class="project-tags"><span>Web</span><span>HCI</span></div>
+                        <a href="https://reynoldsuherman.github.io/project-VSTravel/" target="_blank" rel="noopener noreferrer">View Project</a>
+                    </article>
+
+                    <article class="project" data-categories="software" data-reveal>
+                        <span class="project-index" aria-hidden="true">04</span>
+                        <h3>Software Macro Recorder</h3>
+                        <p>Project pribadi berupa software macro recorder, dibuat karena kesal dengan macro recorder yang hanya bisa berjalan global dan tidak bisa fokus ke satu program saja.</p>
+                        <div class="project-gallery">
+                            <figure class="gallery-item">
+                                <img src="./Footage/image1.png" alt="Tampilan UI software Macro Recorder" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>UI Software</h4><p>Tampilan Software Macro Recorder</p></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="./Footage/iamge3.png" alt="Struktur direktori software Macro Recorder" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>File Direktori</h4><p>Struktur file Macro Recorder</p></figcaption>
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="./Footage/image2.png" alt="Source code software Macro Recorder" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Source Code</h4><p>Source code pembuatan software</p></figcaption>
+                            </figure>
+                        </div>
+                        <div class="project-tags"><span>Software</span><span>Desktop</span></div>
+                        <a href="https://github.com/Reeinold/Macro-Recorder_Reynold" target="_blank" rel="noopener noreferrer">View repository</a>
+                        <a href="Macro_Documentation.html">Documentation</a>
+                    </article>
+
+                    <article class="project" data-categories="software java" data-reveal>
+                        <span class="project-index" aria-hidden="true">05</span>
+                        <h3>Project Java FLA SocierMart</h3>
+                        <p>Project FLA menggunakan Java: SocierMart. Dibuat bersama kelompok 3 yang berisikan 3 orang, dengan menyempurnakan project dari salah satu anggota kelompok. Detail lengkap ada di dokumentasi.</p>
+                        <div class="project-gallery">
+                            <figure class="gallery-item">
+                                <img src="./Footage/java uml.png" alt="UML diagram SocierMart" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>UML Diagram</h4><p>Struktur diagram SocierMart</p></figcaption>
+                            </figure>
+                        </div>
+                        <div class="project-tags"><span>Java</span><span>OOP</span></div>
+                        <a href="https://github.com/Reeinold/FLA_SocierMart" target="_blank" rel="noopener noreferrer">View repository</a>
+                        <a href="SocierMart_Documentation.html">Documentation</a>
+                    </article>
+
+                    <article class="project" data-categories="web" data-reveal>
+                        <span class="project-index" aria-hidden="true">06</span>
+                        <h3>Portfolio Website</h3>
+                        <div class="project-gallery">
+                            <figure class="gallery-item">
+                                <img src="./Footage/websiteeee1.png" alt="Tampilan utama website portofolio" class="project-image" loading="lazy">
+                                <figcaption class="gallery-overlay"><h4>Main Interface</h4><p>Tampilan utama website portofolio</p></figcaption>
+                            </figure>
+                        </div>
+                        <p>Website portofolio yang anda lihat sekarang. Dibuat karena saya ingin menampilkan hasil proyek sambil memperkenalkan diri — anggap saja <u>CV dalam versi web</u>.</p>
+                        <div class="project-tags"><span>Web</span><span>Vanilla JS</span></div>
+                        <a href="index.html">Back to the Main</a>
+                    </article>
+
+                    <article class="project" data-categories="web" data-reveal>
+                        <span class="project-index" aria-hidden="true">07</span>
+                        <h3>Other Projects</h3>
+                        <p>Untuk project lain serta repository yang lengkap, bisa langsung menuju ke GitHub saya.</p>
+                        <div class="project-tags"><span>Archive</span></div>
+                        <a href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                    </article>
+                </div>
+
+                <p class="filter-empty" id="filter-empty" hidden style="text-align:center; margin-top:24px; color: var(--ink-faint); font-family: var(--font-mono); font-size:.82rem;">Belum ada project di kategori ini.</p>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="footer-logo">R<span>.</span></span>
+                    <p>Reynold Suherman — software engineering student and frontend enthusiast based in Bekasi, Indonesia.</p>
+                </div>
+                <nav class="footer-nav" aria-label="Navigasi footer">
+                    <a href="index.html">Main</a>
+                    <a href="About.html">About</a>
+                    <a href="Portofolio.html">Portfolio</a>
+                    <a href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                </nav>
+                <div class="footer-meta">
+                    <p>© <span data-year>2026</span> Reynold Suherman</p>
+                    <p>Built with HTML, CSS &amp; vanilla JS.</p>
+                    <p><a href="mailto:aretelia55@gmail.com">aretelia55@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>Reeinold's Portfolio</span>
+                <a href="#main">Back to top ↑</a>
+            </div>
+        </footer>
     </div>
-    <hr class="tick">
-    <nav>
-        <a href="index.html">Main</a>
-        <a href="About.html">About</a>
-        <a href="Portofolio.html">Portfolio</a>
-        <a href="https://github.com/Reeinold?tab=activity_feed" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </nav>
-    <div class="Portfolio">
-        <h2>Berikut Kumpulan Project yang sudah saya kerjakan</h2>
-        <div class="project-grid">
-            <div class="project">
-                <h3>Website InEdu</h3>
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="./Footage/Websitee1.png" alt="Tampilan utama website InEdu" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Main Interface</h4>
-                            <p>Tampilan utama InEdu</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./Footage/Websitee2.png" alt="Halaman tentang website InEdu" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Tentang Kami</h4>
-                            <p>Halaman tentang website InEdu</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./Footage/Websitee3.png" alt="Fitur aksesibilitas website InEdu" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Aksesibilitas</h4>
-                            <p>Fitur aksesibilitas</p>
-                        </div>
-                    </div>
-                </div>
-                <p>ini adalah Website edukasi yang support untuk para disabilitas yang dibuat pada saat project lecture HCI (Human Computer Interaction) website ini menggunkan dengan SDG 10! karena kami ingin website ini bebas dan terbuka untuk siapapun dan bisa digunakan untuk para disabilitas dikarenakan memiliki fitur aksesbilitas seperti TTS yang support bahasa indonesia dan inggris,fitur tema mulai dari tema terang,gelap dan sepia,serta fitur buta warna seperti:tritanopia,deuteranopia,dan protanopia</p>
-                <a href="https://reynoldsuherman.github.io/project-InEdu/" target="_blank" rel="noopener noreferrer">View Project</a>
-            </div>
 
-            <div class="project">
-                <h3>Website Bslc</h3>
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="./Footage/Websiteee1.png" alt="Tampilan utama website BSLC" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Main Interface</h4>
-                            <p>Tampilan utama Website BSLC</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./Footage/Websiteee2.png" alt="Halaman tentang website BSLC" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Main Interface</h4>
-                            <p>Halaman tentang website BSLC</p>
-                        </div>
-                    </div>
-                </div>
-                <p>Website pertama kali saya buat untuk seleksi masuk BSLC (binus student learning center) divisi IT bisa dibilang website ini hanya dibuat hanya dengan html dan css saja sebagai seleksi masuk menjadi anggota BSLC dalam seleksi saya harus mereplika berdasarkan figma yang sudah diberikan lalu diubah menjadi website yang sama persis agar bisa lolos seleksi BSLC website ini hanya memiliki satu halaman saja dan hanya itu saja yang dibuat berdasarkan dari design figma yang diberikan namun semua element berfunsi</p>
-                <a href="https://reynoldsuherman.github.io/Project-BSLC/" target="_blank" rel="noopener noreferrer">View Project</a>
-            </div>
-
-            <div class="project">
-                <h3>Website VSTravel</h3>
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="./Footage/Website1.png" alt="Tampilan utama website VSTravel" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Main Interface</h4>
-                            <p>Tampilan utama VSTravel</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./Footage/Website2.png" alt="Halaman destinasi website VSTravel" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Destinasi</h4>
-                            <p>Halaman Kumpulan Destinasi dari penjuru dunia dan lokal</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./Footage/Website3.png" alt="Halaman pesan website VSTravel" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Pesan</h4>
-                            <p>Halaman Pesan Sekarang yang interaktif dan menarik</p>
-                        </div>
-                    </div>
-                </div>
-                <p>Project website untuk Lab Human Computer Interaction HCI tentang Website Travel,website ini di buat sesuai dengan soal yang diberikan namun yang membuatnya berbeda adalah walaupun nama website sama namun dari setiap mahasiswa pastinya ada yang berbeda mulai dari layout,tulisan dan isi dari website itu sendiri namun tetap mengikuti panduan dan ketentuan yang sudah diberikan soal tersebut</p>
-                <a href="https://reynoldsuherman.github.io/project-VSTravel/" target="_blank" rel="noopener noreferrer">View Project</a>
-            </div>
-
-            <div class="project">
-                <h3>Software Macro Recorder</h3>
-                <p>ini adalah project sendiri membuat Software Macro Recorder yang aku buat karena aku merasa kesal dengan macro recoder yang hanya bisa berjalan untuk semuanya tidak bisa fokus untuk satu program saja. untuk lebih lengkapnya bisa melihat <u>dokumentasi</u> terkait pembuatan aplikasi ini</p>
-                <a href="https://github.com/Reeinold/Macro-Recorder_Reynold" target="_blank" rel="noopener noreferrer">View repository</a>
-                <a href="Macro_Documentation.html"><b>Documentation</b></a>
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="./Footage/image1.png" alt="Tampilan UI software Macro Recorder" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>UI Software</h4>
-                            <p>Tampilan Software Macro recorder</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./Footage/iamge3.png" alt="Struktur direktori software Macro Recorder" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>File Direktori</h4>
-                            <p>Struktur file macro recoder</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./Footage/image2.png" alt="Source code software Macro Recorder" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Source Code</h4>
-                            <p>Source Code yang digunakan dalam pembuatan software macro recoder</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project">
-                <h3>Portfolio Website</h3>
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="./Footage/websiteeee1.png" alt="Tampilan utama website portofolio" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>Main Interface</h4>
-                            <p>Tampilan utama website portofolio</p>
-                        </div>
-                    </div>
-                </div>
-                <p>ini adalah Website portofolio yang anda lihat sekarang! aku membuat website ini dengan tujuan dikarenakan aku adalah software engineering yang memiliki skill front end yang baik,aku ingin bisa menampilkan beberapa hasil proyek yang aku jadikan portofolio sambil bisa melihat biodata dan lainnya. bisa dibilang <u>anggap saja ini adalah <b>CV dalam versi Web</b></u></p>
-                <a href="index.html">Back to the Main</a>
-            </div>
-
-            <div class="project">
-                <h3>Project Java FLA SocierMart</h3>
-                <p>ini adalah project FLA dengan menggunakan Java yaitu SocierMart ini aku buat bersama dengan kelompok ku yaitu kelompok 3 yang berisikan 3 orang dan juga menggunakan project dari salah satu anggota kelompok yang kebetulan ada dan tinggal di sempurnakan saja untuk lebih lengkapnya ada di <u>dokumentasi</u> tentang SocierMart</p>
-                <div class="project-gallery">
-                    <div class="gallery-item">
-                        <img src="./Footage/java uml.png" alt="UML diagram SocierMart" class="project-image" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h4>UML Diagram SocierMart</h4>
-                            <p>Struktur Diagram sociermart</p>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://github.com/Reeinold/FLA_SocierMart" target="_blank" rel="noopener noreferrer">View repository</a>
-                <a href="SocierMart_Documentation.html"><b>Documentation</b></a>
-            </div>
-
-            <div class="project">
-                <h3>Other Projects</h3>
-                <p>untuk project yang lain serta Repository yang lengkap bisa <b><u>menuju ke github aku.</u></b></p>
-                <a href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            </div>
-        </div>
-    </div>
     <script src="Script.js"></script>
+    <script src="app.js"></script>
+    <script src="github-tracker.js"></script>
+    <script src="github-about.js"></script>
     <script src="music-player.js"></script>
 </body>
 </html>

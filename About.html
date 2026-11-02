@@ -1,274 +1,439 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="modern">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style.css">
+    <meta name="theme-color" content="#33421a">
+    <meta name="description" content="Tentang Reynold Suherman (Reeinold) — biodata, skill, bahasa, dan kontak.">
+    <script>
+        (function () {
+            var theme = 'modern';
+            try {
+                theme = localStorage.getItem('rrn-theme') === 'classic' ? 'classic' : 'modern';
+            } catch (e) { /* storage blocked */ }
+            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.className += ' js';
+            document.write('<link id="theme-css" rel="stylesheet" href="' + (theme === 'classic' ? 'Style.css' : 'Theme.css') + '">');
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Russo+One&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    <title>About - Reeinold's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Russo+One&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <title>About — Reeinold's Portfolio</title>
 </head>
 <body>
-    <div id="Header">
-        <p id="Reeinold">Reeinold's Portfolio</p>
-        <p id="Description"><b>About Me</b></p>
-    </div>
-    <hr class="tick">
-    <nav>
-        <a href="index.html">Main</a>
-        <a href="About.html">About</a>
-        <a href="Portofolio.html">Portfolio</a>
-        <a href="https://github.com/Reeinold?tab=activity_feed" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </nav>
-    <div class="About">
-        <div id="rec">
-            <div class="about-content">
-                <img src="About1.jpg" alt="Reeinold's Photo" class="profile-photo">
-                <div class="about-text">
-                    <h2>Hello, I'm Reeinold</h2>
-                    <p class="reyn">Halo semua, nama aku Reynold Suherman. Sekarang aku berumur 22 tahun dan lahir di Kota Bekasi, lebih tepatnya Bekasi Timur, Jawa Barat. Aku seorang <b><u>mahasiswa BINUS University Bekasi</u></b> angkatan 2027 dengan jurusan <u>Computer Science</u>, peminatan Software Engineering. Sebelum kuliah, aku sempat mengambil gap year selama setahun setelah lulus SMK jurusan <u>TKJ (Teknik Komunikasi Jaringan)</u> karena ingin mencari pengalaman kerja terlebih dahulu.</p>
-                    <p class="reyn">Awalnya Software Engineering bukanlah jurusan yang aku pilih. Pada awalnya aku menguasai bahasa pemrograman Python untuk masuk ke Data Science, tetapi takdir berkata lain karena ternyata Data Science hanya ada di area Kemanggisan dan Alam Sutera yang sangat jauh dari rumah.</p>
-                    <p class="reyn">Saat ini aku sudah berada di semester 7 dan sedang menjalani magang di dalam kampus, tepatnya pada pengerjaan project Jurusan (IIP). Jadi bisa dibilang aku sedang mengadu nasib di Computer Science Software Engineering. Awalnya memang belum terbiasa karena belajar tentang software dan algoritma, tetapi tiap semester aku mulai memahami inti dari Software Engineering itu sendiri. Aku juga merasa lebih siap karena sudah menyiapkan mental dan tidak terburu-buru dalam menghadapi tantangan di dunia perkuliahan.</p>
-                    <p class="reyn">Aku menguasai beberapa bahasa pemrograman sejak SMK, dengan basic web seperti HTML dan Python yang aku pelajari <b>secara otodidak</b>. Di perkuliahan aku mulai mengenal bahasa C, C++, SQL untuk database, serta Python dengan berbagai macam environment seperti scientific, computational physics, dan biology. Karena aku juga menyukai desain, aku menguasai UI/UX serta desain secara umum, mulai dari Canva dan Photoshop. Saat ini aku juga sedang memperdalam <b>backend development</b>, serta bahasa pemrograman Java walaupun aku masih belum mahir.</p>
-                    <p class="reyn">Walaupun aku memiliki sisi kelemahan dalam bahasa pemrograman Java, aku memiliki semangat yang baik, mudah beradaptasi, dan suka bersosialisasi karena pada dasarnya manusia tidak bisa selalu hidup sendiri meskipun terkadang aku suka malu atau terdiam kalau mau memulai percakapan. <b>Aku memiliki motivasi kuat untuk bekerja keras demi membahagiakan orang tua serta membangun masa depan yang lebih baik.</b></p>
-                    <p class="reyn">Ketika aku tidak sedang mengoding, aku biasanya menjelajahi tren teknologi terbaru atau menikmati aktivitas di luar ruangan.</p>
+    <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+    <div id="page">
+        <header id="Header" class="hero page-hero">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <p class="eyebrow">About · Reynold Suherman</p>
+                    <h1 id="Reeinold">
+                        About me<span class="accent-dot">.</span>
+                        <span class="hero-role">CS Student / Builder / Curious Human</span>
+                    </h1>
+                    <p id="Description"><b>Cerita, skill, dan hal-hal yang membuat saya terus belajar.</b></p>
+                    <p id="Greetings" class="greeting greeting--compact"></p>
+                    <p class="hero-lead">Dari TKJ, gap year, sampai Computer Science di BINUS — ini perjalanan saya di dunia software engineering.</p>
                 </div>
             </div>
-            <h2>Biodata</h2>
-            <ul>
-                <li>Nama: Reynold Suherman</li>
-                <li>Tanggal lahir: 2 Mei 2004</li>
-                <li>Umur: 22 tahun</li>
-                <li>Status: Mahasiswa semester 7</li>
-                <li>Magang: Project Jurusan (IIP) di dalam kampus</li>
-                <li>Education: <ul>
-                    <li>TK Ananda Bekasi: 2008-2010</li>
-                    <li>SD Ananda Bekasi: 2010-2016</li>
-                    <li>SMP Ananda Bekasi: 2016-2019</li>
-                    <li>SMK Ananda Bekasi: 2019-2022</li>
-                    <li>Bina Nusantara University (BINUS): Software Engineering 2023-2027 (Semester 7)</li>
-                </ul></li>
-                <li>Favorit: <ul>
-                    <li>Membuat wallpaper sederhana</li>
-                    <li>Nonton:<ul>
-                        <li>Anime</li>
-                        <li>Drama Korea</li>
-                        <li>Atau apapun yang menarik</li>
-                    </ul></li>
-                    <li>Main game:<ul>
-                        <li>RPG</li>
-                        <li>FPS</li>
-                        <li>Indie game</li>
-                        <li>Dan lain-lain</li>
-                    </ul></li>
-                    <li>Belajar sesuatu yang menarik</li>
-                </ul></li>
-            </ul>
+        </header>
 
-            <!-- Skills Section -->
-            <div class="skills-section">
-                <h3>My Skills</h3>
-                <div class="skill-item">
-                    <span class="skill-name">HTML,CSS, And JavaScript</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="75"></div>
+        <nav id="SiteNav" aria-label="Navigasi utama">
+            <a class="nav-brand" href="index.html" aria-label="Reeinold — beranda">R<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Main</a>
+                <a href="About.html" class="is-active" aria-current="page">About</a>
+                <a href="Portofolio.html">Portfolio</a>
+                <a href="https://github.com/Reeinold?tab=activity_feed" target="_blank" rel="noopener noreferrer">GitHub <span class="ext" aria-hidden="true">↗</span></a>
+            </div>
+            <div class="theme-switch" role="group" aria-label="Pilih tema tampilan">
+                <span class="theme-switch-label">Theme</span>
+                <button type="button" data-theme-choice="modern" aria-pressed="true">Fresh</button>
+                <button type="button" data-theme-choice="classic" aria-pressed="false">Classic</button>
+            </div>
+        </nav>
+        <hr class="tick">
+
+        <main id="main">
+            <section class="About" id="about">
+                <div class="section-head" data-reveal>
+                    <p class="kicker">01 — Introduction</p>
+                    <h2>Hello, I'm <em>Reeinold</em>.</h2>
+                    <p class="section-sub">Mahasiswa semester 7 yang sedang menjalani magang project jurusan di dalam kampus. Suka membangun, memperbaiki, dan merapikan hal-hal digital.</p>
+                </div>
+
+                <div id="rec" data-reveal>
+                    <div class="about-content">
+                        <div class="about-media">
+                            <img src="About1.jpg" alt="Reeinold's Photo" class="profile-photo" width="380" height="437">
+                            <span class="about-badge">BINUS · CS 2027</span>
+                        </div>
+                        <div class="about-text">
+                            <h2>Perkenalan singkat</h2>
+                            <p class="reyn">Halo semua, nama aku Reynold Suherman. Sekarang aku berumur 22 tahun dan lahir di Kota Bekasi, lebih tepatnya Bekasi Timur, Jawa Barat. Aku seorang <b><u>mahasiswa BINUS University Bekasi</u></b> angkatan 2027 dengan jurusan <u>Computer Science</u>, peminatan Software Engineering. Sebelum kuliah, aku sempat mengambil gap year selama setahun setelah lulus SMK jurusan <u>TKJ (Teknik Komunikasi Jaringan)</u> karena ingin mencari pengalaman kerja terlebih dahulu.</p>
+                            <p class="reyn">Awalnya Software Engineering bukanlah jurusan yang aku pilih. Pada awalnya aku menguasai bahasa pemrograman Python untuk masuk ke Data Science, tetapi takdir berkata lain karena ternyata Data Science hanya ada di area Kemanggisan dan Alam Sutera yang sangat jauh dari rumah.</p>
+                            <p class="reyn">Saat ini aku sudah berada di semester 7 dan sedang menjalani magang di dalam kampus, tepatnya pada pengerjaan project Jurusan (IIP). Jadi bisa dibilang aku sedang mengadu nasib di Computer Science Software Engineering. Awalnya memang belum terbiasa karena belajar tentang software dan algoritma, tetapi tiap semester aku mulai memahami inti dari Software Engineering itu sendiri. Aku juga merasa lebih siap karena sudah menyiapkan mental dan tidak terburu-buru dalam menghadapi tantangan di dunia perkuliahan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bio-grid">
+                    <article class="bio-card" data-reveal>
+                        <h3>Teknis &amp; otodidak</h3>
+                        <p>Aku menguasai beberapa bahasa pemrograman sejak SMK, dengan basic web seperti <strong>HTML</strong> dan <strong>Python</strong> yang aku pelajari <strong>secara otodidak</strong>. Di perkuliahan aku mulai mengenal bahasa C, C++, SQL untuk database, serta Python dengan berbagai macam environment seperti scientific, computational physics, dan biology.</p>
+                        <p>Karena aku juga menyukai desain, aku menguasai <strong>UI/UX</strong> serta desain secara umum, mulai dari Canva dan Photoshop. Saat ini aku juga sedang memperdalam <strong>backend development</strong>, serta bahasa pemrograman Java walaupun aku masih belum mahir.</p>
+                    </article>
+                    <article class="bio-card" data-reveal>
+                        <h3>Cara kerja</h3>
+                        <p>Walaupun aku memiliki sisi kelemahan dalam bahasa pemrograman Java, aku memiliki semangat yang baik, mudah beradaptasi, dan suka bersosialisasi karena pada dasarnya manusia tidak bisa selalu hidup sendiri meskipun terkadang aku suka malu atau terdiam kalau mau memulai percakapan.</p>
+                        <p><strong>Aku memiliki motivasi kuat untuk bekerja keras demi membahagiakan orang tua serta membangun masa depan yang lebih baik.</strong></p>
+                    </article>
+                    <article class="bio-card" data-reveal>
+                        <h3>Di luar coding</h3>
+                        <p>Ketika aku tidak sedang mengoding, aku biasanya menjelajahi tren teknologi terbaru atau menikmati aktivitas di luar ruangan.</p>
+                        <p>Dan kalau kamu penasaran: coba klik foto profil di atas. Ada sedikit easter egg. 😊</p>
+                    </article>
+                </div>
+
+                <div class="biodata-section" data-reveal>
+                    <h2>Biodata</h2>
+                    <div class="biodata-grid">
+                        <div class="biodata-card">
+                            <h3>Data pribadi</h3>
+                            <ul>
+                                <li>Nama: Reynold Suherman</li>
+                                <li>Tanggal lahir: 2 Mei 2004</li>
+                                <li>Umur: 22 tahun</li>
+                                <li>Status: Mahasiswa semester 7</li>
+                                <li>Magang: Project Jurusan (IIP) di dalam kampus</li>
+                            </ul>
+                        </div>
+                        <div class="biodata-card">
+                            <h3>Pendidikan</h3>
+                            <ul>
+                                <li>TK Ananda Bekasi · 2008–2010</li>
+                                <li>SD Ananda Bekasi · 2010–2016</li>
+                                <li>SMP Ananda Bekasi · 2016–2019</li>
+                                <li>SMK Ananda Bekasi · 2019–2022</li>
+                                <li>Bina Nusantara University (BINUS) · Software Engineering 2023–2027 (Semester 7)</li>
+                            </ul>
+                        </div>
+                        <div class="biodata-card">
+                            <h3>Favorit</h3>
+                            <ul>
+                                <li>Membuat wallpaper sederhana</li>
+                                <li>Nonton:
+                                    <ul>
+                                        <li>Anime</li>
+                                        <li>Drama Korea</li>
+                                        <li>Atau apapun yang menarik</li>
+                                    </ul>
+                                </li>
+                                <li>Main game:
+                                    <ul>
+                                        <li>RPG</li>
+                                        <li>FPS</li>
+                                        <li>Indie game</li>
+                                        <li>Dan lain-lain</li>
+                                    </ul>
+                                </li>
+                                <li>Belajar sesuatu yang menarik</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="skills-section">
+                    <h3>My Skills</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">HTML, CSS, And JavaScript</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="75"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">75%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Adaptability</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="85"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Adaptability</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="85"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">85%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">UI/UX</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="80"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">UI/UX</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="80"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">80%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Graphic Design</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="90"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Graphic Design</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="90"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">90%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Java</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="35"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Java</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="35"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">35%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Teamwork</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="55"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Teamwork</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="55"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">55%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Python</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="75"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="75"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">75%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Backend Development</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="70"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Backend Development</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="70"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">70%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Vibe Coding</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="85"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Vibe Coding</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="85"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">85%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">MySQL</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="30"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">MySQL</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="30"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">30%</span>
                     </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Basic Office skill</span>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="75"></div>
+                    <div class="skill-item">
+                        <span class="skill-name">Basic Office skill</span>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-percentage="75"></div>
+                            </div>
                         </div>
                         <span class="skill-percentage">75%</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Language Proficiency Section -->
-            <div class="languages-section">
-                <h3>Language Proficiency</h3>
-                <div class="language-item">
-                    <span class="language-name">English</span>
-                    <div class="proficiency-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
+                <!-- Language Proficiency Section -->
+                <div class="languages-section" data-reveal>
+                    <h3>Language Proficiency</h3>
+                    <div class="language-item">
+                        <span class="language-name">English</span>
+                        <div class="proficiency-dots" aria-label="8 dari 8">
+                            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                        </div>
+                        <span class="proficiency-text">Fluent</span>
                     </div>
-                    <span class="proficiency-text">Fluent</span>
-                </div>
-                <div class="language-item">
-                    <span class="language-name">Indonesia</span>
-                    <div class="proficiency-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
+                    <div class="language-item">
+                        <span class="language-name">Indonesia</span>
+                        <div class="proficiency-dots" aria-label="8 dari 8">
+                            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                        </div>
+                        <span class="proficiency-text">Main Language</span>
                     </div>
-                    <span class="proficiency-text">Main Language</span>
-                </div>
-                <div class="language-item">
-                    <span class="language-name">Japanese</span>
-                    <div class="proficiency-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+                    <div class="language-item">
+                        <span class="language-name">Japanese</span>
+                        <div class="proficiency-dots" aria-label="3 dari 8">
+                            <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
+                        <span class="proficiency-text">Intermediate</span>
                     </div>
-                    <span class="proficiency-text">Intermediate</span>
-                </div>
-                <div class="language-item">
-                    <span class="language-name">Korean</span>
-                    <div class="proficiency-dots">
-                        <span class="dot filled"></span>
-                        <span class="dot filled"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+                    <div class="language-item">
+                        <span class="language-name">Korean</span>
+                        <div class="proficiency-dots" aria-label="2 dari 8">
+                            <span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        </div>
+                        <span class="proficiency-text">Basic</span>
                     </div>
-                    <span class="proficiency-text">Basic</span>
-                </div>
-            </div>
-
-            <!-- Contact & Social Section -->
-            <div class="contact-section">
-                <div class="contact-info">
-                    <h3>Contact Me</h3>
-                    <p><strong>Email:</strong> <a href="mailto:aretelia55@gmail.com">aretelia55@gmail.com</a></p>
-                    <p><strong>Location:</strong> Kota bekasi-Bekasi Timur Jawa barat, Indonesia</p>
-                    <p><strong>Phone Num:</strong> +62 0858-9964-3303</p>
-                    <p><strong>Available for:</strong> Freelance projects, Full-time opportunities</p>
                 </div>
 
-                <div class="social-section">
-                    <h3>Follow Me</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer" class="social-link github-btn">
-                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            Go to my GitHub
-                        </a>
-                        <a href="https://instagram.com/anziethy" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                            Instagram
-                        </a>
-                        <a href="https://twitter.com/ReynoldReei" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
-                            Twitter
-                        </a>
+                <!-- GitHub Pulse -->
+                <section class="gh-pulse" id="gh-pulse" data-reveal aria-labelledby="ghp-title" aria-busy="true">
+                    <div class="ghp-head">
+                        <div class="ghp-id">
+                            <span class="ghp-photo">
+                                <img id="ghp-photo" src="Profile1.jpg" alt="Reynold Suherman" width="76" height="76" loading="lazy">
+                            </span>
+                            <div class="ghp-idtext">
+                                <p class="ghp-kicker"><span class="ghp-dot" aria-hidden="true"></span> Live from GitHub</p>
+                                <h2 id="ghp-title">GitHub <em>pulse</em>.</h2>
+                                <p class="ghp-sub">Yang sedang saya bangun, bahasa yang paling sering dipakai, dan ritme aktivitas terakhir.</p>
+                            </div>
+                        </div>
+                        <div class="ghp-actions">
+                            <span class="ghp-handle" id="ghp-handle">@Reeinold</span>
+                            <a class="ghp-btn" id="ghp-profile" href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer">Buka profil <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </div>
+
+                    <div class="ghp-body">
+                        <div class="ghp-stats">
+                            <div class="ghp-stat">
+                                <span class="ghp-num" data-ghp="repos">—</span>
+                                <span class="ghp-lbl">Repos</span>
+                            </div>
+                            <div class="ghp-stat">
+                                <span class="ghp-num" data-ghp="stars">—</span>
+                                <span class="ghp-lbl">Stars</span>
+                            </div>
+                            <div class="ghp-stat">
+                                <span class="ghp-num" data-ghp="followers">—</span>
+                                <span class="ghp-lbl">Followers</span>
+                            </div>
+                            <div class="ghp-stat">
+                                <span class="ghp-num" data-ghp="days">—</span>
+                                <span class="ghp-lbl">Hari aktif</span>
+                            </div>
+                        </div>
+
+                        <div class="ghp-panel ghp-langs">
+                            <p class="ghp-panel-title">Top languages</p>
+                            <div class="ghp-lang-wrap">
+                                <div class="ghp-donut-wrap">
+                                    <svg class="ghp-donut" viewBox="0 0 120 120" role="img" aria-label="Distribusi bahasa repositori publik">
+                                        <circle class="ghp-donut-track" cx="60" cy="60" r="46"></circle>
+                                        <g id="ghp-slices"></g>
+                                    </svg>
+                                    <div class="ghp-donut-center">
+                                        <span id="ghp-repo-count">—</span>
+                                        <small id="ghp-center-label">repo</small>
+                                    </div>
+                                </div>
+                                <ul class="ghp-legend" id="ghp-legend"></ul>
+                            </div>
+                        </div>
+
+                        <div class="ghp-panel ghp-rhythm">
+                            <p class="ghp-panel-title">Ritme 14 hari</p>
+                            <div class="ghp-bars" id="ghp-bars" role="img" aria-label="Aktivitas publik 14 hari terakhir"></div>
+                            <p class="ghp-note" id="ghp-note">Menghitung aktivitas publik…</p>
+                        </div>
+                    </div>
+
+                    <div class="ghp-foot">
+                        <div class="ghp-spot">
+                            <span class="ghp-spot-label">Spotlight</span>
+                            <a class="ghp-spot-link" id="ghp-spot-link" href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer">—</a>
+                            <span class="ghp-spot-meta" id="ghp-spot-meta"></span>
+                        </div>
+                        <div class="ghp-foot-actions">
+                            <button type="button" class="ghp-refresh" id="ghp-refresh" aria-label="Muat ulang data GitHub">
+                                <span aria-hidden="true">↻</span> Refresh
+                            </button>
+                            <a class="ghp-more" href="index.html#github">Lihat playlist lengkap <span aria-hidden="true">→</span></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact & Social Section -->
+                <div class="contact-section" data-reveal>
+                    <div class="contact-info">
+                        <h3>Contact Me</h3>
+                        <p><strong>Email</strong> <a href="mailto:aretelia55@gmail.com">aretelia55@gmail.com</a></p>
+                        <p><strong>Location</strong> Kota Bekasi — Bekasi Timur, Jawa Barat, Indonesia</p>
+                        <p><strong>Phone Num</strong> +62 0858-9964-3303</p>
+                        <p><strong>Available for</strong> Freelance projects, Full-time opportunities</p>
+                    </div>
+
+                    <div class="social-section">
+                        <h3>Follow Me</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer" class="social-link github-btn">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                Go to my GitHub
+                            </a>
+                            <a href="https://instagram.com/anziethy" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                                Instagram
+                            </a>
+                            <a href="https://twitter.com/ReynoldReei" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                                Twitter
+                            </a>
+                        </div>
                     </div>
                 </div>
+
+                <div style="text-align:center; margin-top: 34px" data-reveal>
+                    <a class="btn btn-solid" href="Portofolio.html">View My Portfolio <span>→</span></a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <span class="footer-logo">R<span>.</span></span>
+                    <p>Reynold Suherman — software engineering student and frontend enthusiast based in Bekasi, Indonesia.</p>
+                </div>
+                <nav class="footer-nav" aria-label="Navigasi footer">
+                    <a href="index.html">Main</a>
+                    <a href="About.html">About</a>
+                    <a href="Portofolio.html">Portfolio</a>
+                    <a href="https://github.com/Reeinold" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                </nav>
+                <div class="footer-meta">
+                    <p>© <span data-year>2026</span> Reynold Suherman</p>
+                    <p>Built with HTML, CSS &amp; vanilla JS.</p>
+                    <p><a href="mailto:aretelia55@gmail.com">aretelia55@gmail.com</a></p>
+                </div>
             </div>
-        </div>
-        <button onclick="window.location.href='Portofolio.html'">View My Portfolio</button>
+            <div class="footer-bottom">
+                <span>Reeinold's Portfolio</span>
+                <a href="#main">Back to top ↑</a>
+            </div>
+        </footer>
     </div>
+
     <script src="Script.js"></script>
+    <script src="app.js"></script>
+    <script src="github-tracker.js"></script>
+    <script src="github-about.js"></script>
     <script src="music-player.js"></script>
 </body>
 </html>
