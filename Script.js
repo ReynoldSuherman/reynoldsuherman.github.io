@@ -79,13 +79,25 @@
 
     var typingSpeed = 85;
     var deletingSpeed = 38;
-    var holdTime = 1500;
-    var gapTime = 300;
+    var holdTime = 1400;
+    var gapTime = 260;
+
+    function shuffleArray(items) {
+        var array = items.slice();
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
 
     var typer = {
         el: null,
         wordEl: null,
         langEl: null,
+        queue: [],
         wordIndex: 0,
         charIndex: 0,
         deleting: false,
@@ -104,6 +116,10 @@
         typer.el = null;
         typer.wordEl = null;
         typer.langEl = null;
+        typer.queue = [];
+        typer.wordIndex = 0;
+        typer.charIndex = 0;
+        typer.deleting = false;
     }
 
     function paintGreeting(word, language) {
@@ -124,6 +140,13 @@
         typer.langEl = el.querySelector('.greet-lang');
     }
 
+    function resetGreetingQueue() {
+        typer.queue = shuffleArray(greetings);
+        typer.wordIndex = 0;
+        typer.charIndex = 0;
+        typer.deleting = false;
+    }
+
     function typeStep() {
         var el = typer.el;
         if (!el || !el.isConnected) {
@@ -132,7 +155,7 @@
         }
         if (typer.paused) return;
 
-        var entry = greetings[typer.wordIndex];
+        var entry = typer.queue[typer.wordIndex] || greetings[0];
 
         if (!typer.deleting) {
             typer.charIndex++;
@@ -151,7 +174,12 @@
 
             if (typer.charIndex <= 0) {
                 typer.deleting = false;
-                typer.wordIndex = (typer.wordIndex + 1) % greetings.length;
+                typer.wordIndex = (typer.wordIndex + 1) % typer.queue.length;
+
+                if (typer.wordIndex === 0) {
+                    typer.queue = shuffleArray(greetings);
+                }
+
                 typer.timer = setTimeout(typeStep, gapTime);
                 return;
             }
@@ -168,19 +196,7 @@
         typer.el = el;
         mountGreeting(el);
 
-        var reduceMotion = window.matchMedia &&
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        if (reduceMotion) {
-            var entry = greetings[0];
-            paintGreeting(entry.word, entry.lang);
-            el.classList.add('is-static');
-            return;
-        }
-
-        typer.wordIndex = 0;
-        typer.charIndex = 0;
-        typer.deleting = false;
+        resetGreetingQueue();
         typer.running = true;
         typer.timer = setTimeout(typeStep, 650);
     }
@@ -210,25 +226,28 @@
     var skillObserver = null;
 
     function animateProgressBars() {
-        var fills = document.querySelectorAll('.progress-fill');
+        var fills = Array.prototype.slice.call(document.querySelectorAll('.progress-fill'));
         if (!fills.length) return;
 
-        fills.forEach(function (fill) {
+        fills.forEach(function (fill, index) {
+            var value = Number(fill.getAttribute('data-percentage')) || 0;
+            var clamped = Math.max(0, Math.min(100, value));
+            fill.setAttribute('data-percentage', String(clamped));
             fill.style.transition = 'none';
             fill.style.width = '0%';
-        });
+            fill.classList.remove('animating');
 
-        // force reflow
-        if (fills[0]) void fills[0].offsetWidth;
-
-        fills.forEach(function (fill, index) {
-            var percentage = Number(fill.getAttribute('data-percentage')) || 0;
-            setTimeout(function () {
-                fill.style.transition = 'width 1.6s cubic-bezier(.4,0,.2,1)';
-                fill.style.width = percentage + '%';
-                fill.classList.add('animating');
-                setTimeout(function () { fill.classList.remove('animating'); }, 2000);
-            }, 120 + index * 90);
+            requestAnimationFrame(function () {
+                var delay = 120 + index * 90;
+                setTimeout(function () {
+                    fill.style.transition = 'width 1.3s cubic-bezier(.22, 1, .36, 1), filter 0.7s ease';
+                    fill.style.width = clamped + '%';
+                    fill.classList.add('animating');
+                    setTimeout(function () {
+                        fill.classList.remove('animating');
+                    }, 1600);
+                }, delay);
+            });
         });
     }
 
@@ -245,28 +264,32 @@
             skillObserver = null;
         }
 
+        function runAnimationIfVisible(section) {
+            if (section.hasAttribute('data-animated')) return;
+            section.setAttribute('data-animated', 'true');
+            setTimeout(animateProgressBars, 180);
+        }
+
         if (!('IntersectionObserver' in window)) {
-            animateProgressBars();
-            sections.forEach(function (s) { s.setAttribute('data-animated', 'true'); });
+            sections.forEach(function (section) {
+                runAnimationIfVisible(section);
+            });
             return;
         }
 
         skillObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (!entry.isIntersecting) return;
-                if (entry.target.hasAttribute('data-animated')) return;
-                entry.target.setAttribute('data-animated', 'true');
-                setTimeout(animateProgressBars, 160);
+                runAnimationIfVisible(entry.target);
+                skillObserver.unobserve(entry.target);
             });
         }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
 
         sections.forEach(function (section) {
-            // Already on screen? Animate right away.
             var rect = section.getBoundingClientRect();
             var visible = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
             if (visible) {
-                section.setAttribute('data-animated', 'true');
-                setTimeout(animateProgressBars, 300);
+                runAnimationIfVisible(section);
             } else {
                 skillObserver.observe(section);
             }
