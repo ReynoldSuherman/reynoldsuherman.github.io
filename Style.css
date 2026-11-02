@@ -208,22 +208,34 @@ nav a:hover {
 }
 
 .progress-fill {
+    --skill-fill: 0;
+    --skill-delay: 0ms;
     height: 100%;
     background: linear-gradient(90deg, olivedrab, #4a5d23 60%, #7aa625);
     border-radius: 6px;
-    width: 0%;
-    transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    width: 100%;
     position: relative;
     box-shadow: 0 0 10px rgba(107, 142, 35, 0.3);
-    transform-origin: left;
+    transform-origin: left center;
+    transform: scaleX(0);
+    opacity: 1;
+    animation: skillSlide 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--skill-delay);
+    will-change: transform, filter;
 }
 .progress-fill::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
+    transform: translateX(-120%);
     animation: sheen 3.5s ease-in-out infinite;
+}
+
+@keyframes skillSlide {
+    0% { transform: scaleX(0); filter: brightness(1); }
+    18% { transform: scaleX(calc(var(--skill-fill) * 0.22)); filter: brightness(1.08); }
+    100% { transform: scaleX(var(--skill-fill)); filter: brightness(1); }
 }
 
 .progress-fill.animating {

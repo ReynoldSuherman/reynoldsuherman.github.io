@@ -233,20 +233,18 @@
             var value = Number(fill.getAttribute('data-percentage')) || 0;
             var clamped = Math.max(0, Math.min(100, value));
             fill.setAttribute('data-percentage', String(clamped));
-            fill.style.transition = 'none';
-            fill.style.width = '0%';
+            fill.style.setProperty('--skill-fill', (clamped / 100).toFixed(3));
+            fill.style.animation = 'none';
+            fill.style.animationDelay = (120 + index * 100) + 'ms';
             fill.classList.remove('animating');
 
             requestAnimationFrame(function () {
-                var delay = 120 + index * 90;
+                fill.style.animation = 'skillSlide 1.5s cubic-bezier(.22, 1, .36, 1) forwards';
+                fill.style.animationDelay = (120 + index * 100) + 'ms';
+                fill.classList.add('animating');
                 setTimeout(function () {
-                    fill.style.transition = 'width 1.3s cubic-bezier(.22, 1, .36, 1), filter 0.7s ease';
-                    fill.style.width = clamped + '%';
-                    fill.classList.add('animating');
-                    setTimeout(function () {
-                        fill.classList.remove('animating');
-                    }, 1600);
-                }, delay);
+                    fill.classList.remove('animating');
+                }, 1700);
             });
         });
     }
