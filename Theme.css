@@ -1539,11 +1539,12 @@ main { display: block; }
     display: flex;
     align-items: center;
     gap: 12px;
-    width: 100%;
-    justify-content: flex-end;
+    width: min(100%, 220px);
+    justify-content: flex-start;
 }
 .progress-bar {
     width: 100%;
+    max-width: 220px;
     height: 10px;
     border-radius: var(--radius-pill);
     background: linear-gradient(180deg, rgba(231, 230, 213, .9), rgba(214, 216, 198, .9));
