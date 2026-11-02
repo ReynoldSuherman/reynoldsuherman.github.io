@@ -237,18 +237,10 @@
             fill.setAttribute('data-percentage', String(clamped));
             fill.style.setProperty('--skill-fill', (clamped / 100).toFixed(3));
             fill.style.setProperty('--skill-delay', delay + 'ms');
-            fill.style.animation = 'none';
-            fill.style.transform = 'scaleX(0)';
-            fill.classList.remove('animating');
+            fill.classList.remove('animating', 'is-animating');
 
             requestAnimationFrame(function () {
-                fill.style.animation = 'skillSlide 1.5s cubic-bezier(.22, 1, .36, 1) forwards';
-                fill.style.animationDelay = delay + 'ms';
-                fill.classList.add('animating');
-                setTimeout(function () {
-                    fill.classList.remove('animating');
-                    fill.style.filter = 'brightness(1)';
-                }, 1700);
+                fill.classList.add('animating', 'is-animating');
             });
         });
     }

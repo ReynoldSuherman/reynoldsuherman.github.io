@@ -219,8 +219,7 @@ nav a:hover {
     transform-origin: left center;
     transform: scaleX(0);
     opacity: 1;
-    animation: skillSlide 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: var(--skill-delay);
+    animation: none;
     will-change: transform, filter, box-shadow;
 }
 .progress-fill::before {
@@ -238,7 +237,10 @@ nav a:hover {
     100% { transform: scaleX(var(--skill-fill)); filter: brightness(1); box-shadow: 0 0 10px rgba(107, 142, 35, 0.3); }
 }
 
-.progress-fill.animating {
+.progress-fill.animating,
+.progress-fill.is-animating {
+    animation: skillSlide 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--skill-delay);
     filter: brightness(1.04);
 }
 
