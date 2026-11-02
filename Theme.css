@@ -1544,7 +1544,7 @@ main { display: block; }
     justify-content: flex-start;
 }
 .progress-bar {
-    width: 100%;
+    width: 85%;
     max-width: 100%;
     height: 10px;
     border-radius: var(--radius-pill);
