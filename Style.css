@@ -141,19 +141,42 @@ nav a:hover {
 }
 
 .skill-item {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 25px;
     gap: 15px;
     padding: 15px;
-    background-color: #f8f9fa;
+    background: linear-gradient(180deg, #ffffff, #f8f9fa);
     border-radius: 8px;
     border: 1px solid #e9ecef;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.skill-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(107, 142, 35, .12), transparent 45%, rgba(107, 142, 35, .08));
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 0.55s ease, opacity 0.3s ease;
+}
+.skill-item:hover {
+    border-color: rgba(107, 142, 35, .4);
+    transform: translateX(4px) translateY(-2px);
+    box-shadow: 0 16px 26px rgba(0,0,0,0.06);
+}
+.skill-item:hover::before {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .skill-name {
+    position: relative;
+    z-index: 1;
     min-width: 80px;
     max-width: 140px;
     font-weight: 600;
@@ -163,31 +186,48 @@ nav a:hover {
     padding-right: 10px;
     word-break: break-word;
     line-height: 1.2;
+    transition: color 0.25s ease;
+}
+.skill-item:hover .skill-name {
+    color: olivedrab;
 }
 
 .progress-bar {
     width: 320px;
     height: 12px;
-    background-color: #e9ecef;
+    background: linear-gradient(180deg, #ebeee0, #dfe4d7);
     border-radius: 6px;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease;
+}
+.skill-item:hover .progress-bar {
+    transform: scaleY(1.2);
 }
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, olivedrab, #4a5d23);
+    background: linear-gradient(90deg, olivedrab, #4a5d23 60%, #7aa625);
     border-radius: 6px;
     width: 0%;
-    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
     position: relative;
     box-shadow: 0 0 10px rgba(107, 142, 35, 0.3);
     transform-origin: left;
 }
+.progress-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+    transform: translateX(-100%);
+    animation: sheen 3.5s ease-in-out infinite;
+}
 
 .progress-fill.animating {
-    animation: progressGlow 2s ease-in-out;
+    animation: progressGlow 1.8s ease-in-out;
 }
 
 @keyframes progressGlow {
@@ -195,13 +235,12 @@ nav a:hover {
         box-shadow: 0 0 10px rgba(107, 142, 35, 0.3);
     }
     50% {
-        box-shadow: 0 0 20px rgba(107, 142, 35, 0.6);
+        box-shadow: 0 0 22px rgba(107, 142, 35, 0.65), 0 0 28px rgba(203, 232, 107, 0.25);
     }
     100% {
         box-shadow: 0 0 10px rgba(107, 142, 35, 0.3);
     }
 }
-
 
 .progress-container {
     display: flex;
@@ -212,12 +251,19 @@ nav a:hover {
 }
 
 .skill-percentage {
+    position: relative;
+    z-index: 1;
     min-width: 45px;
     text-align: right;
     font-weight: 600;
     color: olivedrab;
     font-size: 0.9rem;
     flex-shrink: 0;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+.skill-item:hover .skill-percentage {
+    transform: translateX(-2px);
+    color: #4a5d23;
 }
 
 /* Contact & Social Section */
