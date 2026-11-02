@@ -1539,12 +1539,13 @@ main { display: block; }
     display: flex;
     align-items: center;
     gap: 12px;
-    width: clamp(260px, 32vw, 440px);
+    width: min(100%, 85%);
+    max-width: 860px;
     justify-content: flex-start;
 }
 .progress-bar {
     width: 100%;
-    max-width: 440px;
+    max-width: 860px;
     height: 10px;
     border-radius: var(--radius-pill);
     background: linear-gradient(180deg, rgba(231, 230, 213, .9), rgba(214, 216, 198, .9));
@@ -1900,8 +1901,12 @@ main { display: block; }
         grid-template-columns: 1fr auto;
         gap: 10px 14px;
     }
-    .progress-container { grid-column: 1 / -1; }
-    .progress-bar { width: 100%; }
+    .progress-container {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-width: 100%;
+    }
+    .progress-bar { width: 100%; max-width: 100%; }
 
     .language-item {
         grid-template-columns: 1fr auto;
