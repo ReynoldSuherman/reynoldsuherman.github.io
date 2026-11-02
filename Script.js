@@ -237,7 +237,7 @@
             fill.setAttribute('data-percentage', String(clamped));
             fill.style.setProperty('--skill-fill', (clamped / 100).toFixed(3));
             fill.style.setProperty('--skill-delay', delay + 'ms');
-            fill.style.width = '0';
+            fill.style.width = '';
             fill.classList.remove('animating', 'is-animating');
 
             requestAnimationFrame(function () {

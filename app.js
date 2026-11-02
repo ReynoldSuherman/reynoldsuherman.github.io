@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    var APP_VERSION = '20261102-v1';
+    var APP_VERSION = '20261102-v2';
     var THEME_KEY = 'rrn-theme';
     var THEME_FILES = { modern: 'Theme.css', classic: 'Style.css' };
     var MAIN_PAGES = ['index.html', 'About.html', 'Portofolio.html', ''];

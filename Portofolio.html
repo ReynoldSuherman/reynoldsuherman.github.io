@@ -8,7 +8,7 @@
     <script>
         (function () {
             var theme = 'modern';
-            var assetVersion = '20261102-v1';
+            var assetVersion = '20261102-v2';
             try {
                 theme = localStorage.getItem('rrn-theme') === 'classic' ? 'classic' : 'modern';
             } catch (e) { /* storage blocked */ }
@@ -227,8 +227,8 @@
         </footer>
     </div>
 
-    <script src="Script.js"></script>
-    <script src="app.js"></script>
+    <script src="Script.js?v=20261102-v2"></script>
+    <script src="app.js?v=20261102-v2"></script>
     <script src="github-tracker.js"></script>
     <script src="github-about.js"></script>
     <script src="music-player.js"></script>
